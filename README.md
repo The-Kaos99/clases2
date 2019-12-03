@@ -1,2 +1,1 @@
-# clases2
-# Esto es una pruewbna 
+# Esto es una prueba 
