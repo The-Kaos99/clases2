@@ -1,0 +1,8 @@
+@import "/var/www/html/interfaces/pruebas-sass/boostrap-sass/scss/functions";
+@import "/var/www/html/interfaces/pruebas-sass/boostrap-sass/scss/variables";
+$navbar-light-hover-color:$blue;
+$navbar-light-active-color:$blue;
+$dropdown-link-hover-bg: $blue;
+
+@import "/var/www/html/interfaces/pruebas-sass/boostrap-sass/scss/bootstrap.scss";
+@import "estilos.css";

@@ -1,0 +1,81 @@
+.fondomont{
+    background-repeat: repeat-x;
+    background-image: url(imagenes/slider-bg.png);
+    background-position: 0%;
+}
+.cabecera{
+    display: flex;
+   justify-content: space-between;
+}
+.columanarow{
+    display: flex;
+    flex-wrap:nowrap;
+  align-items: center;
+ 
+}
+.colorboton{
+    background-color: white;
+    color: blue;
+    
+}
+.centroicobajo{
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    text-align: center;
+}
+.flotocentro{
+    display: flex;
+   align-items: center;
+}
+.fondotour{
+    background-image: url(imagenes/tour-bg.png);
+}
+.alineado{
+    display: flex;
+    align-items: baseline;
+}
+.derecha{
+    text-align: right;
+}
+.centro{
+    display: flex;
+    justify-content: center;
+   
+}
+.centro2{
+    display: flex;
+    justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+.clientes{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+    .columanarow{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+     
+    }
+    .movil1{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap; 
+        align-content: center;
+        
+    }
+    .movil2{
+        display: flex;
+        justify-content: space-between;
+    }
+    .imgmovil{
+        width: 100%;
+    }
+  }
+  .montanna{
+      width: 100%;
+  }
