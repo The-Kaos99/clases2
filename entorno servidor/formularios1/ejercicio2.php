@@ -31,8 +31,9 @@ if (isset($_REQUEST["idioma"])) {
     $idioma=$_REQUEST["idioma"];
     print ("Idioma:");
     foreach ($idioma as $key => $value) {
-        print ($value." <br>");
+        print ($value." ,");
     }
+    print ("<br>");
 }
 if (isset($_REQUEST["descripcion"])) {
     $descripcion=$_REQUEST["descripcion"];
