@@ -1,22 +1,24 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Testeo</title>
 </head>
+
 <body>
-	<h1>Ejemplo con id</h1>
-	<div>
-		<div>
-			<div>
-				<!-- Aquí pongo el name también porque normalmente los formularios envían su información a un .php y para eso necesitan un name -->
-				<!-- El	name puede ser igual que el id o diferente, da exactamente igual -->
-				<input type="text" name="texto" id="textazo">
-			</div>
-		</div>
-	</div>
-		<button onclick="
+    <h1>Ejemplo con id</h1>
+    <div>
+        <div>
+            <div>
+                <!-- Aquí pongo el name también porque normalmente los formularios envían su información a un .php y para eso necesitan un name -->
+                <!-- El	name puede ser igual que el id o diferente, da exactamente igual -->
+                <input type="text" name="texto" id="textazo">
+            </div>
+        </div>
+    </div>
+    <button onclick="
 		var valorEscrito = document.getElementById('textazo').value;
         document.getElementById('Antonio').innerHTML = valorEscrito;
         document.getElementById('cuadro').innerHTML='Esto es una prueba a ver como se comporta esta chuminada'
@@ -24,14 +26,32 @@
     <p id="Antonio"></p>
     <h1 id="cuadro"></h1>
     <script type="text/javascript">
-    var miArray=new Array();
-    for (let index = 0; index < 100; index++) {
-       miArray[index]=parseInt(Math.random()*100);        
-    } 
-    miArray.forEach(function(valor,indice,array){
-        document.write("<br>El valor es :"+valor+" La posison es : "+indice);
-    })
+        var miArray = new Array();
+        for (let index = 0; index < 100; index++) {
+            miArray[index] = parseInt(Math.random() * 100);
+        }
+        miArray.forEach(function (valor, indice, array) {
+            document.write("<br>El valor es :" + valor + " La posison es : " + indice);
+        })
+
+        function Coche(marca_in, modelo_in, anyo_in) {
+            this.marca = marca_in;
+            this.modelo = modelo_in;
+            this.anyo = anyo_in;
+        }
+
+        var coches = new Array(4);
+        coches[0] = new Coche("Ferrari", "Scaglietti", "2010");
+        coches[1] = new Coche("BMW", "Z4", "2010");
+        coches[2] = new Coche("Seat", "Toledo", "1999");
+        coches[3] = new Coche("Fiat", "500", "1995");
+        for (i = 0; i < coches.length; i++) {
+            document.write("Marca: " + coches[i].marca +
+                " - Modelo:  "+ coches[i].modelo + " - Año de fabricación: " + coches[i].anyo + "<br>");
+            } 
+            
     </script>
-	
+
 </body>
+
 </html>
