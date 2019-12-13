@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <select name="color" id="color">
+        <option value="green">Verde</option>
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+    </select><br><!-- Aqui lo unico que hago es recoger el valor de la variable color del selector y 
+        la añado al bgColor   
+    -->
+    <button onclick='document.bgColor=document.getElementById("color").value;'>Enviar</button>
+
+   
+<br><br><br>
+    <select name="pghora" id="pghora">
+        <option value="h">Hora</option>
+        <option value="m">Mensaje</option>
+
+    </select>
+    <!--Creo una nueva venta al pulsar el boton
+        cojo el valos del selector 
+        paso ese valor a un variable
+        y comparo para selecionar si es mensaje o la hora
+    -->
+    <button onclick='  
+    var ventan1=window.open("","300px","300px");
+    var var2=document.getElementById("pghora").value;
+    var eje2;
+    if ("h"==var2) {
+        eje2=Date();             
+    }else{
+       eje2= "Hola mundo";
+    }
+    ventan1.document.write(eje2);
+    '>Enviar a nueva ventada</button>
+
+
+<br><br><br>
+    <select name="pghora2" id="pghora2">
+        <option value="h">Hora</option>
+        <option value="m">Mensaje</option>
+    </select>
+    <!--Creo una nueva venta al pulsar el boton
+        cojo el valos del selector 
+        paso ese valor a un variable
+        y comparo para selecionar si es mensaje o la hora
+    -->
+    <select name="color2" id="color2">
+        <option value="green">Verde</option>
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+    </select><button onclick='  
+    var ventan3=window.open("","300px","300px");
+    var var2=document.getElementById("pghora2").value;
+    var fondo=document.getElementById("color2").value;
+ 
+    var eje2;
+    if ("h"==var2) {
+        eje2=Date();          
+    }else{
+       eje2= "Hola mundo";
+    }
+    ventan3.document.write(eje2);
+    ventana3.document.bgColor=fondo;
+    ventan3.document.write("<script type=\"text/javascrip\">");
+    ventan3.document.write("document.bgColor="+fondo);
+    ventan3.document.write("/<script>");
+    '>Enviar a Ejercico3</button>
+    
+    
+    <br>
+</body>
+
+</html>
