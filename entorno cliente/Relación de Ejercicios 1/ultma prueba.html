@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <center>
+            <form name="form1">
+                <legend>Ejercicio Practico del control T1 - T2 - T3 - T4</legend>
+                <!-- Hacemos la seleccion de numeros -->
+                <select name="cantidad">
+                    <option value="50">50</option>
+                    <option value="51">51</option>
+                    <option value="52">52</option>
+                    <option value="53">53</option>
+                    <option value="54">54</option>
+                    <option value="55">55</option>
+                    <option value="56">56</option>
+                    <option value="57">57</option>
+                    <option value="58">58</option>
+                    <option value="59">59</option>
+                    <option value="60">60</option>
+                </select>
+                <!-- Hacemos la seleccion de numeros aleatorios -->
+                <select name="aleatorios">
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+
+                <input type="button" onclick=ventana1() value="Ventana1">
+                <input type="button" onclick=ventana2() value="Ventana2">
+                <input type="button" onclick=ventana3() value="Ventana3">
+                <input type="button" onclick=ventana4() value="Ventana4">
+                <script>
+                    var array1 = new Array();
+                    var array2 = new Array();
+                    function ventana1(){
+                        var v = window.open('', "Ventana1", "width=300px, height=300px"); //Abrimos una ventana
+                        var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                        var c = document.form1.aleatorios.value; //Recogemos el valor seleccionado
+                        //Creamos el array con el valor seleccionado de numeros
+                        for (var i = 1; i<=b; i++){
+                            array1[i] = i;
+                        }
+                        //Creamos el array con el valor seleccionado de numeros aleatorios
+                        for (var j = 0; j<c; j++){
+                            array2[j] = parseInt(Math.random()*(b-1)+1);
+                        }
+                        v.document.write("Cantidad: <br>");
+                        v.document.write(array1.join(" "));
+                        v.document.write("<br>Numeros aleatorios: <br>");
+                        v.document.write(array2.join(" "));
+                        v.document.bgColor='yellow';
+                        v.moveTo(0, 0);
+                    }
+
+                    function ventana2(){
+                        var v = window.open('', "Ventana2", "width=300px, height=300px"); //Abrimos una ventana
+                        var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                        var c = document.form1.aleatorios.value; //Recogemos el valor seleccionado
+                        var array3 = new Array();
+
+                        var menor=9999;
+                        var mayor=0;
+                        //Buscamos el numero menor aleatorio
+                        for(var i=0; i<c; i++){
+                            if(menor>array2[i]){
+                                menor = array2[i];
+                            }
+                        }
+                        //Buscamos el numero mayor aleatorio
+                        for(var i=0; i<c; i++){
+                            if(mayor<array2[i]){
+                                mayor = array2[i];
+                            }
+                        }
+                        //Creamos un array comprendido entre el menor y el mayor
+                        for(var i=menor;i<=mayor;i++){
+                            array3[i] = i;
+                        }
+                        v.document.write("Numeros aleatorios: <br>");
+                        v.document.write(array2.join(" "));
+                        v.document.write("<br>Lista: <br>");
+                        v.document.write(array3.join(" "));
+                        v.document.bgColor='green';
+                        v.moveTo(outerWidth, 0);
+                    }
+
+                    function ventana3(){
+                        var v = window.open('', "Ventana3", "width=300px, height=300px"); //Abrimos una ventana
+                        var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                        var c = document.form1.aleatorios.value; //Recogemos el valor seleccionado
+                        var array4 = new Array();
+                        //Creamos un array con los numeros impares. Si el resto es distinto de 0, es impar.
+                        for(var i=0;i<c;i++){
+                            if(array2[i]%2!==0){
+                                array4[i]=array2[i];
+                            }
+                        }
+                        //Ordenamos de manera ascendente los numeros impares.
+                        array4.sort(function(x,y){ 
+                            return x-y;
+                        })
+                        v.document.write("Numeros aleatorios: <br>");
+                        v.document.write(array2.join(" "));
+                        v.document.write("<br>Numeros aleatorios impares: <br>");
+                        v.document.write(array4.join(" "));
+                        v.document.bgColor='lightblue';
+                        v.moveTo(0, outerHeight);
+                    }
+
+                    function ventana4(){
+                        var v = window.open('', "Ventana4", "width=300px, height=300px"); //Abrimos una ventana
+                        var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                        var c = document.form1.aleatorios.value; //Recogemos el valor seleccionado
+                        var array4 = new Array();
+                        var cont = 0;
+                        var media=0;
+                        //Creamos un array con los numeros pares. Si el resto es igual a 0, es par.
+                        //En caso de ser par, aumentamos el contador para poder realizar la media.
+                        for(var i=0;i<c;i++){
+                            if(array2[i]%2==0){
+                                array4[i]=array2[i];
+                                cont++;
+                                media = media + array4[i];
+                            }
+
+                        }
+                        //Realizamos la media dividiendo entre el contador.
+                        media = media / cont;
+                        v.document.write("Numeros aleatorios: <br>");
+                        v.document.write(array2.join(" "));
+                        v.document.write("<br>Numeros aleatorios pares: <br>");
+                        v.document.write(array4.join(" "));
+                        v.document.write("<br>Media aritmetica: <br>");
+                        v.document.write(media);
+                        v.document.bgColor='red';
+                        v.moveTo(outerWidth, outerHeight);
+                    }
+
+                </script>
+            </form>
+        </center>
+    </body>
+</html>
