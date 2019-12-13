@@ -9,7 +9,7 @@
             <form name="form1">
                 <legend>Ejercicio Practico del control T1 - T2 - T3 - T4</legend>
                 <!-- Hacemos la seleccion de numeros -->
-                <select name="cantidad">
+                <select name="cantidad" id="cantidad">
                     <option value="50">50</option>
                     <option value="51">51</option>
                     <option value="52">52</option>
@@ -39,7 +39,8 @@
                     var array2 = new Array();
                     function ventana1(){
                         var v = window.open('', "Ventana1", "width=300px, height=300px"); //Abrimos una ventana
-                        var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                        //var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                        var b = document.getElementById('cantidad').value;
                         var c = document.form1.aleatorios.value; //Recogemos el valor seleccionado
                         //Creamos el array con el valor seleccionado de numeros
                         for (var i = 1; i<=b; i++){
@@ -59,7 +60,8 @@
 
                     function ventana2(){
                         var v = window.open('', "Ventana2", "width=300px, height=300px"); //Abrimos una ventana
-                        var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                       // var b = document.form1.cantidad.value; //Recogemos el valor seleccionado
+                        var b = document.getElementById('cantidad').value;
                         var c = document.form1.aleatorios.value; //Recogemos el valor seleccionado
                         var array3 = new Array();
 
