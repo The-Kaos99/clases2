@@ -23,7 +23,15 @@
         ">Pulsa para que pasen cosas</button>
     <p id="Antonio"></p>
     <h1 id="cuadro"></h1>
-	<script>
-	</script>
+    <script type="text/javascript">
+    var miArray=new Array();
+    for (let index = 0; index < 100; index++) {
+       miArray[index]=parseInt(Math.random()*100);        
+    } 
+    miArray.forEach(function(valor,indice,array){
+        document.write("<br>El valor es :"+valor+" La posison es : "+indice);
+    })
+    </script>
+	
 </body>
 </html>
