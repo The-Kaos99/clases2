@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Testeo</title>
+</head>
+<body>
+	<h1>Ejemplo con id</h1>
+	<div>
+		<div>
+			<div>
+				<!-- Aquí pongo el name también porque normalmente los formularios envían su información a un .php y para eso necesitan un name -->
+				<!-- El	name puede ser igual que el id o diferente, da exactamente igual -->
+				<input type="text" name="texto" id="textazo">
+			</div>
+		</div>
+	</div>
+		<button onclick="
+		var valorEscrito = document.getElementById('textazo').value;
+        document.getElementById('Antonio').innerHTML = valorEscrito;
+        document.getElementById('cuadro').innerHTML='Esto es una prueba a ver como se comporta esta chuminada'
+        ">Pulsa para que pasen cosas</button>
+    <p id="Antonio"></p>
+    <h1 id="cuadro"></h1>
+	<script>
+	</script>
+</body>
+</html>
