@@ -1,0 +1,26 @@
+{
+  "name": "prueba-grunt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "gm": "^1.23.1",
+    "grunt": "^1.0.4",
+    "grunt-contrib-watch": "^1.1.0",
+    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^7.1.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-svgo": "^7.0.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-imagemin": "^3.1.0",
+    "grunt-responsive-images": "^1.10.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "The-Kaos99",
+  "license": "ISC"
+}
