@@ -4,7 +4,7 @@ const src = 'src/';
 const aux1 = 'auxiliar/';
 const dest = 'resultado/';
 
-// Plugins necesarios
+// Plugins necesarios    
 
 const pngquant = require('imagemin-pngquant');
 const mozjpeg = require('imagemin-mozjpeg');
