@@ -36,9 +36,7 @@
       <div class="col-12">
 <?php
 if (isset($_REQUEST["enviar"])){
-
-  $archivo=is_uploaded_file($_FILES['fichero']['tmp_name']);
-     
+  $archivo=is_uploaded_file($_FILES['fichero']['tmp_name']); 
   if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
     print( "<h2 class=\"text-success text-center\">Archivo con nombre : ". $_FILES['fichero']['name'] ." subido</h2>");
     //meter esto en un if y con expresiones controlar imagen o texto 
@@ -70,10 +68,8 @@ if (isset($_REQUEST["enviar"])){
      } else {
         print("<h2 class=\"text-danger text-center\" >Hubo un error con el formato del archivo </h2>");
      }
-    
   }else{
     print("<h2 class=\"text-danger text-center\" >Hubo un error </h2>");
-  
  } 
 }
 ?>
