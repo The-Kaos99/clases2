@@ -27,21 +27,44 @@
       <div class="col-12">
         <form action="repo.php" method="post" enctype="multipart/form-data">
           <input type="file" name="fichero" id="fichero" class="btn btn-warning text-info">
-          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button name="enviar" type="submit" class="btn btn-primary">Enviar</button>
         </form>
       </div>
     </div>
-  </div>
-  <?php
+
+    <div class="row">
+      <div class="col-12">
+       <?php
+
+
+if (isset($_REQUEST["enviar"])){
+
+  $archivo=is_uploaded_file($_FILES['fichero']['tmp_name']);
+  
+ 
+      $archivo=0;
+      if (is_uploaded_file($_FILES['fichero']['tmp_name'])){
+        
+      }
   if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
     print( "<h2 class=\"text-success text-center\">Archivo con nombre : ". $_FILES['fichero']['name'] ." subido</h2>");
     //meter esto en un if y con expresiones controlar imagen o texto 
-    echo mime_content_type($_FILES['fichero']['tmp_name']);
+   $archivo2=mime_content_type($_FILES['fichero']['tmp_name']);
+    if(preg_match("/^text/",$archivo) || preg_match("/^image/",$archivo2))
+  {
+    print( "<h2 class=\"text-success text-center\">Archivo con formato correcto</h2>");
+  } else {
+    print("<h2 class=\"text-danger text-center\" >Hubo un error con el formato del archivo </h2>");
+  }
+    
   }else{
   print("<h2 class=\"text-danger text-center\" >Hubo un error </h2>");
   
- }
+ } }
   ?>
+      </div>
+    </div>
+  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
