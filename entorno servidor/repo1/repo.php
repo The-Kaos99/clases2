@@ -34,34 +34,49 @@
 
     <div class="row">
       <div class="col-12">
-       <?php
-
-
+<?php
 if (isset($_REQUEST["enviar"])){
 
   $archivo=is_uploaded_file($_FILES['fichero']['tmp_name']);
-  
- 
-      $archivo=0;
-      if (is_uploaded_file($_FILES['fichero']['tmp_name'])){
-        
-      }
+     
   if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
     print( "<h2 class=\"text-success text-center\">Archivo con nombre : ". $_FILES['fichero']['name'] ." subido</h2>");
     //meter esto en un if y con expresiones controlar imagen o texto 
-   $archivo2=mime_content_type($_FILES['fichero']['tmp_name']);
-    if(preg_match("/^text/",$archivo) || preg_match("/^image/",$archivo2))
-  {
-    print( "<h2 class=\"text-success text-center\">Archivo con formato correcto</h2>");
-  } else {
-    print("<h2 class=\"text-danger text-center\" >Hubo un error con el formato del archivo </h2>");
-  }
+     $archivo2=mime_content_type($_FILES['fichero']['tmp_name']);
+     if(preg_match("/^text\/plain/",$archivo2) || preg_match("/^image/",$archivo2)){
+        print( "<h2 class=\"text-success text-center\">Archivo con formato correcto</h2>");
+        if (preg_match("/^text\/plain/",$archivo2)) {
+          $directorio="doc/";
+          if (is_dir($directorio)){ // es un directorio existente
+            $idUnico = time();
+            $nombreFichero = $idUnico."-". $_FILES['fichero']['name'];
+            $nombreCompleto = $directorio.$nombreFichero;
+            move_uploaded_file ($_FILES['fichero']['tmp_name'],$nombreCompleto);
+            print( "<h2 class=\"text-success text-center\">Fichero subido con el nombre: $nombreFichero</h2>");
+            print (" <p><a href=\"$nombreCompleto\" class=\"text-primary\">$nombreCompleto</a></p>");
+            }
+        }
+        if (preg_match("/^image/",$archivo2)) {
+          $directorio="img/";
+          if (is_dir($directorio)){ // es un directorio existente
+            $idUnico = time();
+            $nombreFichero = $idUnico."-". $_FILES['fichero']['name'];
+            $nombreCompleto = $directorio.$nombreFichero;
+            move_uploaded_file ($_FILES['fichero']['tmp_name'],$nombreCompleto);
+            print( "<h2 class=\"text-success text-center\">Fichero subido con el nombre: $nombreFichero</h2>");
+             print ("<img src=\"$nombreCompleto\" alt=\"\">");
+            }
+        }
+     } else {
+        print("<h2 class=\"text-danger text-center\" >Hubo un error con el formato del archivo </h2>");
+     }
     
   }else{
-  print("<h2 class=\"text-danger text-center\" >Hubo un error </h2>");
+    print("<h2 class=\"text-danger text-center\" >Hubo un error </h2>");
   
- } }
-  ?>
+ } 
+}
+?>
       </div>
     </div>
   </div>
