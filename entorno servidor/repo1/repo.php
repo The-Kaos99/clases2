@@ -41,9 +41,13 @@ if (isset($_REQUEST["enviar"])){
     print( "<h2 class=\"text-success text-center\">Archivo con nombre : ". $_FILES['fichero']['name'] ." subido</h2>");
     //meter esto en un if y con expresiones controlar imagen o texto 
      $archivo2=mime_content_type($_FILES['fichero']['tmp_name']);
-     if(preg_match("/^text\/plain/",$archivo2) || preg_match("/^image/",$archivo2)){
+     print($archivo2);
+     if(preg_match("/^text\/plain/",$archivo2) || preg_match("/^image/",$archivo2) || preg_match("/^application\/pdf/",$archivo2)||
+     preg_match("/^application\/vnd.oasis.opendocument.text/",$archivo2) || preg_match("/^application\/msword/",$archivo2)
+     ){
         print( "<h2 class=\"text-success text-center\">Archivo con formato correcto</h2>");
-        if (preg_match("/^text\/plain/",$archivo2)) {
+        if (preg_match("/^text\/plain/",$archivo2) || preg_match("/^application\/pdf/",$archivo2)||
+        preg_match("/^application\/vnd.oasis.opendocument.text/",$archivo2) || preg_match("/^application\/msword/",$archivo2)) {
           $directorio="doc/";
           if (is_dir($directorio)){ // es un directorio existente
             $idUnico = time();
@@ -72,7 +76,9 @@ if (isset($_REQUEST["enviar"])){
     print("<h2 class=\"text-danger text-center\" >Hubo un error </h2>");
  } 
 }
-?>
+?> 
+<a href="img/">Imagenes</a>
+<a href="doc/">Documentos</a>
       </div>
     </div>
   </div>
