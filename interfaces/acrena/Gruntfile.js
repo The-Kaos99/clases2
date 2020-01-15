@@ -1,8 +1,8 @@
 // Opciones
 
-const src = 'interfaces/acrena/img/src';
-const aux1 = 'interfaces/acrena/img/auxiliar';
-const dest = 'interfaces/acrena/img/resultado';
+const src = 'acrena\img\src';
+const aux1 = 'acrena\img\auxiliar';
+const dest = 'acrena\img\resultado';
 
 // Plugins necesarios    
 
