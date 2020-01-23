@@ -13,18 +13,20 @@
 </head>
 
 <body>
-    <script type="text/javascript"  src="validacion.js"></script>
+    <script type="text/javascript" src="validacion.js"></script>
     <div class="container">
         <div class="row pt-5">
             <div class="col-4"></div>
             <div class="col-4" class="">
-                <form action="" method="post" class="bg-primary p-4 border border-dark" name="formValidado" onsubmit="return validar()">
+                <form action="" method="post" class="bg-primary p-4 border border-dark" name="formValidado"
+                    onsubmit="return validar()">
                     <div class="row">
                         <div class="col-6">
                             <p class="pt-2">Nombre:</p>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre">
+                            <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre"
+                            onfocusout="mayus(this);">
                         </div>
                     </div>
                     <div class="row">
@@ -32,7 +34,8 @@
                             <p class="pt-2">Apellido:</p>
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Apellido" id="apellido">
+                            <input type="text" class="form-control" placeholder="Apellido" id="apellido"
+                            onfocusout="mayus(this);">
                         </div>
                     </div>
                     <div class="row">
@@ -100,7 +103,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <button type="submit" class="btn btn-dark" >Enviar</button>
+                            <button type="submit" class="btn btn-dark">Enviar</button>
                         </div>
                         <div class="col-6">
                             <button type="reset" class="btn btn-dark">Limpiar</button>
@@ -111,7 +114,7 @@
             <div class="col-4"></div>
         </div>
     </div>
-    <!-- Optional JavaScript -->  
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
