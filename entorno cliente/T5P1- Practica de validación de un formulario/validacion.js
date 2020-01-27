@@ -67,6 +67,12 @@ function validar() {
     document.getElementById("hora").focus();
     return false;
   }
+  //confirm("Estas seguro de que quieres mannr los datos??");
+  if (confirm("Estas seguro de que quieres mannr los datos??")==flase) {
+   
+    return false;
+  } 
+  alert("Hay un problema");
   return true;
 }
 
