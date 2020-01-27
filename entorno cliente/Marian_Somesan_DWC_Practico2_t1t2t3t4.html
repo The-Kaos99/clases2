@@ -17,7 +17,11 @@
     </select><br><!-- Aqui lo unico que hago es recoger el valor de la variable color del selector y 
         la añado al bgColor   
     -->
-    <button onclick='document.bgColor=document.getElementById("color").value;'>Enviar</button>
+    <button onclick='document.bgColor=document.getElementById("color").value;
+    var fecha= new Date();
+    var hora = fecha.getHours();
+    var minutos=fecha.getMinutes();
+    '>Enviar</button>
 
    
 <br><br><br>
@@ -36,7 +40,8 @@
     var var2=document.getElementById("pghora").value;
     var eje2;
     if ("h"==var2) {
-        eje2=Date();             
+        eje2=Date();
+                     
     }else{
        eje2= "Hola mundo";
     }
@@ -61,8 +66,7 @@
     </select><button onclick='  
     var ventan3=window.open("","300px","300px");
     var var2=document.getElementById("pghora2").value;
-    var fondo=document.getElementById("color2").value;
- 
+    var fondo=document.getElementById("color2").value; 
     var eje2;
     if ("h"==var2) {
         eje2=Date();          
@@ -70,10 +74,7 @@
        eje2= "Hola mundo";
     }
     ventan3.document.write(eje2);
-    ventana3.document.bgColor=fondo;
-    ventan3.document.write("<script type=\"text/javascrip\">");
-    ventan3.document.write("document.bgColor="+fondo);
-    ventan3.document.write("/<script>");
+    ventan3.document.bgColor=fondo;
     '>Enviar a Ejercico3</button>
     
     

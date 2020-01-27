@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="color" id="color">
+        <option value="green">Verde</option>
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+    </select><br>
+    <button onclick='ejercicio1()'>Enviar</button>
+    <br><br><br>
+    <select name="pghora" id="pghora">
+        <option value="h">Hora</option>
+        <option value="m">Mensaje</option>
+    </select>
+    <button onclick='ejercicio2()'>Enviar a nueva ventada</button>
+    <br><br><br>
+    <select name="pghora2" id="pghora2">
+        <option value="h">Hora</option>
+        <option value="m">Mensaje</option>
+    </select>
+    <select name="color2" id="color2">
+        <option value="green">Verde</option>
+        <option value="red">Rojo</option>
+        <option value="blue">Azul</option>
+    </select><button onclick='ejercicio3()'>Enviar a Ejercico3</button>
+
+
+    <script type="text/javascript">
+
+        function ejercicio1() {
+            document.bgColor = document.getElementById("color").value
+        }
+        function ejercicio2() {
+            var ventan1 = window.open("", "300px", "300px");
+            var var2 = document.getElementById("pghora").value;
+            var eje2;
+            if ("h" == var2) {
+                var fecha = new Date();
+                var hora = fecha.getHours();
+                var minutos = fecha.getMinutes();
+                eje2 = hora + ":" + minutos;
+            } else {
+                eje2 = "Hola mundo";
+            }
+            ventan1.document.write(eje2);
+        }
+        function ejercicio3() {
+            var ventan3 = window.open("", "300px", "300px");
+            var var2 = document.getElementById("pghora2").value;
+            var fondo = document.getElementById("color2").value;
+            var eje2;
+            if ("h" == var2) {
+                var fecha = new Date();
+                var hora = fecha.getHours();
+                var minutos = fecha.getMinutes();
+                eje3 = hora + ":" + minutos;
+            } else {
+                eje3 = "Hola mundo";
+            }
+            ventan3.document.write(eje3);
+            ventan3.document.bgColor = fondo;
+        }
+
+
+    </script>
+</body>
+
+</html>
