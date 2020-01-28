@@ -28,20 +28,21 @@
         <form action="repo.php" method="post" enctype="multipart/form-data">
           <input type="file" name="fichero" id="fichero" class="btn btn-warning text-info">
           <button name="enviar" type="submit" class="btn btn-primary">Enviar</button>
+          <a href="img/">Imagenes</a>
+          <a href="doc/">Documentos</a>
         </form>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-<?php
+        <?php
 if (isset($_REQUEST["enviar"])){
   $archivo=is_uploaded_file($_FILES['fichero']['tmp_name']); 
   if (is_uploaded_file($_FILES['fichero']['tmp_name'])) {
     print( "<h2 class=\"text-success text-center\">Archivo con nombre : ". $_FILES['fichero']['name'] ." subido</h2>");
     //meter esto en un if y con expresiones controlar imagen o texto 
      $archivo2=mime_content_type($_FILES['fichero']['tmp_name']);
-     print($archivo2);
      if(preg_match("/^text\/plain/",$archivo2) || preg_match("/^image/",$archivo2) || preg_match("/^application\/pdf/",$archivo2)||
      preg_match("/^application\/vnd.oasis.opendocument.text/",$archivo2) || preg_match("/^application\/msword/",$archivo2)
      ){
@@ -66,7 +67,7 @@ if (isset($_REQUEST["enviar"])){
             $nombreCompleto = $directorio.$nombreFichero;
             move_uploaded_file ($_FILES['fichero']['tmp_name'],$nombreCompleto);
             print( "<h2 class=\"text-success text-center\">Fichero subido con el nombre: $nombreFichero</h2>");
-             print ("<img src=\"$nombreCompleto\" alt=\"\">");
+             //print ("<img src=\"$nombreCompleto\" alt=\"\">");
             }
         }
      } else {
@@ -76,10 +77,72 @@ if (isset($_REQUEST["enviar"])){
     print("<h2 class=\"text-danger text-center\" >Hubo un error </h2>");
  } 
 }
+$imagenes=scandir("img/");
+$documentos=scandir("doc/");
+$elementosimg=count($imagenes);
+$elementosdoc=count($documentos);
+//print("<br>");
+for ($i=2; $i < $elementosimg; $i++) { 
+  print("  
+  <div class=\"row p-2 border border-dark\">
+        <div class=\"col-6\">
+        <p class=\"text-center text-white\" >$imagenes[$i]</p>
+        </div>
+        <div class=\"col-6\" >
+        <form action=\"./borrar.php\" method=\"post\" name=\"formValidado\">
+                <div class=\"row \">
+                    <div class=\"col-6 pb-2\">
+                        <button type=\"submit\" class=\"btn btn-dark \">Eliminar</button>
+                    </div>
+                </div>
+            </form>
+            <form action=\"./renombrar.php\" method=\"post\" name=\"formValidado\">
+                <div class=\"row\">
+                    <div class=\"col-6\">
+                        <input type=\"text\" class=\"form-control\" placeholder=\"Nuevo Nombre\" id=\"nuevoNombre\">
+                    </div>
+                    <div class=\"col-6\">
+                        <button type=\"submit\" class=\"btn btn-dark\">Renombrar</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+  ");
+}
+for ($i=2; $i < $elementosdoc; $i++) { 
+  print("  
+  <div class=\"row p-2 border border-dark\">
+        <div class=\"col-6\">
+        <p class=\"text-center text-white\" >$documentos[$i]</p>
+        </div>
+        <div class=\"col-6\" >
+        <form action=\"borrar.php\" method=\"post\" name=\"formValidado\">
+                <div class=\"row \">
+                    <div class=\"col-6 pb-2\">
+                        <button type=\"reset\" class=\"btn btn-dark \">Eliminar</button>
+                    </div>
+                </div>
+            </form>
+            <form action=\"renombrar.php\" method=\"post\" name=\"formValidado\">
+                <div class=\"row\">
+                    <div class=\"col-6\">
+                        <input type=\"text\" class=\"form-control\" placeholder=\"Nuevo Nombre\" id=\"nuevoNombre\">
+                    </div>
+                    <div class=\"col-6\">
+                        <button type=\"reset\" class=\"btn btn-dark\">Renombrar</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+  ");
+}
 
-?> 
-<a href="img/">Imagenes</a>
-<a href="doc/">Documentos</a>
+?>
+
       </div>
     </div>
   </div>
