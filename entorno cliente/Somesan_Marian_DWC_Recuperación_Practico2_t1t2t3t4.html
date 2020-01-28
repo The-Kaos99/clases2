@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Examen</title>
+</head>
+
+<body>
+    <select name="color" id="color">
+        <option value="green">Verde</option>
+        <option value="red">Rojo</option>
+    </select><br>
+    <button onclick='ejercicio1()'>Enviar</button>
+    <br><br><br>
+    <select name="examen2" id="examen2">
+        <option value="h">Hora</option>
+        <option value="m">Mensaje</option>
+        <option value="d">Dia</option>
+    </select>
+    <button onclick='ejercicio2()'>Enviar a nueva ventada</button>
+    <br><br><br>
+    <select name="color3" id="color3">
+        <option value="green">Verde</option>
+        <option value="red">Rojo</option>
+    </select>
+    <select name="examen3" id="examen3">
+        <option value="h">Hora</option>
+        <option value="m">Mensaje</option>
+        <option value="d">Dia</option>
+    </select>
+    <button onclick='ejercicio3()'>Enviar a nueva ventada</button>
+    <br><br><br>
+
+
+
+    <script type="text/javascript">
+       
+        function ejercicio1() {
+            document.bgColor = document.getElementById("color").value;
+            //cogemos el valor del formulario y seteamos el bgColor a ese 
+        }
+        function ejercicio2() {
+            var ventan1 = window.open("", "300px", "300px");//abrimos una nueva ventana 
+            var fecha = new Date();//creamos la variable fecha que contendra el Date()
+            var var2 = document.getElementById("examen2").value;//obtenemos el valor del selector examen2
+            var eje2;//declaramos esta variable para su uso posterior
+            switch (var2) {//con este switch comprobamos la opcion que nos ha entrado desde el selector examen
+                case "h"://comprobamos que es la hora 
+                    var hora = fecha.getHours();//recogemos la hora de la variable fecha que hemos delcara anteriormente 
+                    var minutos = fecha.getMinutes();//de igual manera los minutos 
+                    eje2 = "La hora es :" + hora + ":" + minutos;//Le damos a la variable que declaramos antes el valor
+                    break;
+                case "m"://comprobamos que es el mensaje
+                    eje2 = "Hola mundo";//escribimos el mensaje 
+                    break;
+                case "d"://comprobamos que es el dia 
+                    var dia = fecha.getDay();//obtenemos el valor del dia 
+                    switch (dia) {//aqui hacemos la comparacion con el dia para mostrarlo en español y corretamente 
+                        case 1:
+                            dia = "Lunes";
+                            break;
+                        case 2:
+                            dia = "Martes";
+                            break;
+                        case 3:
+                            dia = "Miercoles";
+                            break;
+                        case 4:
+                            dia = "Jueves";
+                            break;
+                        case 5:
+                            dia = "Viernes";
+                            break;
+                        case 6:
+                            dia = "Sabado";
+                            break;
+                        case 7:
+                            dia = "Domingo";
+                            break;
+                        default:
+                            break;
+                    }
+                    eje2 = "Hoy es : " + dia;//se guarda en la variable 
+                    break;
+                default:
+                    break;
+            }
+            ventan1.document.write(eje2);//se muestra esta variable en el documento de la vetana 2
+        }
+        function ejercicio3() {
+            var eje3;//declaramos eje3
+            var ventana3 = window.open("", "300px", "300px");//abrimos una ventana 
+            var var3 = document.getElementById("examen3").value;//obtenemos el valor del elemento examen3
+            var color3 = document.getElementById("color3").value;//obtenemos el valor del elemento color3
+            var fecha = new Date();//creamos la variable fecha que contendra el Date()
+
+            switch (var3) {//comprobamos que se ha selecionando en el elemento examen3 y damos el valor a eje3
+                case "h":
+                    var hora = fecha.getHours();
+                    var minutos = fecha.getMinutes();
+                    eje3 = "La hora es :" + hora + ":" + minutos;
+                    break;
+                case "m":
+                    eje3 = "Hola mundo";
+                    break;
+                case "d":
+                    var dia = fecha.getDay();
+                    switch (dia) {
+                        case 1:
+                            dia = "Lunes";
+                            break;
+                        case 2:
+                            dia = "Martes";
+                            break;
+                        case 3:
+                            dia = "Miercoles";
+                            break;
+                        case 4:
+                            dia = "Jueves";
+                            break;
+                        case 5:
+                            dia = "Viernes";
+                            break;
+                        case 6:
+                            dia = "Sabado";
+                            break;
+                        case 7:
+                            dia = "Domingo";
+                            break;
+                        default:
+                            break;
+                    }
+                    eje3 = "Hoy es : " + dia;
+                    break;
+                default:
+                    break;
+            }
+            
+            ventana3.document.write(eje3);//escribimos en el documento
+            if (var3 == "m") {//comprobam si es mensaje la seleccion de examen3
+                ventana3.document.bgColor = color3;//si sumple cambiamnos el color de la vetana 
+            }
+        }
+
+    </script>
+</body>
+
+</html>
