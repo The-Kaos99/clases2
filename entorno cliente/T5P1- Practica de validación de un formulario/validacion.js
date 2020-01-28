@@ -68,7 +68,7 @@ function validar() {
     return false;
   }
   //confirm("Estas seguro de que quieres mannr los datos??");
-  if (confirm("Estas seguro de que quieres mannr los datos??")==flase) {
+  if (confirm("Estas seguro de que quieres mandar los datos??")==flase) {
    
     return false;
   } 
