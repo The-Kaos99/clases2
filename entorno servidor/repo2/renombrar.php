@@ -24,6 +24,22 @@
             <div class="col-12 text-center"><a href="<?=$_SERVER['HTTP_REFERER'] ?>">Volver</a></div>
         </div>
     </header>
+    <?php
+    $fichero = $_REQUEST["fichero"];
+    $nombre= $_REQUEST["nuevoNombre"];
+    $dir=$_REQUEST["dir"];
+    
+    if ($nombre=="") {
+        print("<h2 class=\"text-danger text-center\" >Hubo un error</h2>");
+    }else{        
+        if (rename("$dir$fichero","$dir$nombre")) {
+            print( "<h2 class=\"text-success text-center\">Nombre Cambiado</h2>");
+        }else{
+            print("<h2 class=\"text-danger text-center\" >Hubo un error</h2>");
+        }
+    }
+
+?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

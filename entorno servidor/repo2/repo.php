@@ -28,8 +28,8 @@
         <form action="repo.php" method="post" enctype="multipart/form-data">
           <input type="file" name="fichero" id="fichero" class="btn btn-warning text-info">
           <button name="enviar" type="submit" class="btn btn-primary">Enviar</button>
-          <a href="img/">Imagenes</a>
-          <a href="doc/">Documentos</a>
+          <a href="img/"class="text-white bg-dark">Imagenes</a>
+          <a href="doc/" class="text-white bg-dark">Documentos</a>
         </form>
       </div>
     </div>
@@ -93,13 +93,16 @@ for ($i=2; $i < $elementosimg; $i++) {
                 <div class=\"row \">
                     <div class=\"col-6 pb-2\">
                         <button type=\"submit\" class=\"btn btn-dark \">Eliminar</button>
+                        <input type=\"hidden\" name=\"fichero\" id=\"fichero\" value=\"./img/$imagenes[$i]\">
                     </div>
                 </div>
             </form>
             <form action=\"./renombrar.php\" method=\"post\" name=\"formValidado\">
                 <div class=\"row\">
-                    <div class=\"col-6\">
-                        <input type=\"text\" class=\"form-control\" placeholder=\"Nuevo Nombre\" id=\"nuevoNombre\">
+                    <div class=\"col-6\">                        
+                        <input type=\"hidden\" name=\"fichero\" id=\"fichero\" value=\"$imagenes[$i]\">
+                        <input type=\"hidden\" name=\"dir\" id=\"fichero\" value=\"./img/\">
+                        <input type=\"text\" class=\"form-control\" name=\"nuevoNombre\" placeholder=\"Nuevo Nombre\" id=\"nuevoNombre\">
                     </div>
                     <div class=\"col-6\">
                         <button type=\"submit\" class=\"btn btn-dark\">Renombrar</button>
@@ -121,17 +124,20 @@ for ($i=2; $i < $elementosdoc; $i++) {
         <form action=\"borrar.php\" method=\"post\" name=\"formValidado\">
                 <div class=\"row \">
                     <div class=\"col-6 pb-2\">
-                        <button type=\"reset\" class=\"btn btn-dark \">Eliminar</button>
+                        <button type=\"submit\" class=\"btn btn-dark \">Eliminar</button>
+                        <input type=\"hidden\" name=\"fichero\" id=\"fichero\" value=\"./doc/$documentos[$i]\">
                     </div>
                 </div>
             </form>
-            <form action=\"renombrar.php\" method=\"post\" name=\"formValidado\">
+            <form action=\"./renombrar.php\" method=\"post\" name=\"formValidado\">
                 <div class=\"row\">
                     <div class=\"col-6\">
-                        <input type=\"text\" class=\"form-control\" placeholder=\"Nuevo Nombre\" id=\"nuevoNombre\">
+                        <input type=\"hidden\" name=\"fichero\" id=\"fichero\" value=\"$documentos[$i]\">
+                        <input type=\"hidden\" name=\"dir\" id=\"fichero\" value=\"./doc/\">
+                        <input type=\"text\" class=\"form-control\" name=\"nuevoNombre\" placeholder=\"Nuevo Nombre\" id=\"nuevoNombre\">
                     </div>
                     <div class=\"col-6\">
-                        <button type=\"reset\" class=\"btn btn-dark\">Renombrar</button>
+                        <button type=\"submit\" class=\"btn btn-dark\">Renombrar</button>
                     </div>
                 </div>
             </form>
