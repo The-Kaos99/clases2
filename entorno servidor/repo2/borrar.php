@@ -26,11 +26,17 @@
 
     <?php
 $fichero = $_REQUEST["fichero"];
+if (is_dir ($fichero)) {
+    //print("<h2 class=\"text-danger text-center\" >Es un directorio</h2>");
+    if (rmdir ($fichero)) {
+        print( "<h2 class=\"text-success text-center\">Directorio eliminado correctamente</h2>");
+    }
+}else{
 if (unlink("$fichero")){
     print( "<h2 class=\"text-success text-center\">Fichero eliminado correctamente</h2>");
 }else{
     print("<h2 class=\"text-danger text-center\" >Hubo un error con el borrado </h2>");
-}
+}}
 ?>
 
     <!-- Optional JavaScript -->

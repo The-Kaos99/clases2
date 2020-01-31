@@ -71,17 +71,16 @@ if (isset($_REQUEST["enviar"])){
             }
         }
      } else {
-        print("<h2 class=\"text-danger text-center\" >Hubo un error con el formato del archivo </h2>");
+        print("<h2 class=\"danger text-danger text-center\" >Hubo un error con el formato del archivo </h2>");
      }
   }else{
-    print("<h2 class=\"text-danger text-center\" >Hubo un error </h2>");
+    print("<h2 class=\"danger text-danger text-center\" >Hubo un error </h2>");
  } 
 }
 $imagenes=scandir("img/");
 $documentos=scandir("doc/");
 $elementosimg=count($imagenes);
 $elementosdoc=count($documentos);
-//print("<br>");
 for ($i=2; $i < $elementosimg; $i++) { 
   print("  
   <div class=\"row p-2 border border-dark\">

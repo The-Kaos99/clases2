@@ -28,15 +28,49 @@
     $fichero = $_REQUEST["fichero"];
     $nombre= $_REQUEST["nuevoNombre"];
     $dir=$_REQUEST["dir"];
+    $imagenes=scandir("img/");
+    $documentos=scandir("doc/");
+    $elementosimg=count($imagenes);
+    $elementosdoc=count($documentos);
+    $existe=false;
     
     if ($nombre=="") {
         print("<h2 class=\"text-danger text-center\" >Hubo un error</h2>");
-    }else{        
-        if (rename("$dir$fichero","$dir$nombre")) {
-            print( "<h2 class=\"text-success text-center\">Nombre Cambiado</h2>");
-        }else{
-            print("<h2 class=\"text-danger text-center\" >Hubo un error</h2>");
+    }else{    
+        
+        for ($i=2; $i < $elementosimg; $i++) { 
+           if ($nombre==$imagenes[$i]) {
+            print("<h2 class=\"danger text-danger text-center\" >Hubo un error</h2>");
+            $existe=true;
+           }        
         }
+        if ($existe) {
+           
+        }else{
+            if (rename("$dir$fichero","$dir$nombre")) {
+                print( "<h2 class=\"success text-success text-center\">Nombre Cambiado</h2>");
+                $existe=true;
+            }else{
+                print("<h2 class=\"danger text-danger text-center\" >Hubo un error</h2>");
+            }
+        }
+        
+        for ($i=2; $i < $elementosdoc; $i++) { 
+            if ($nombre==$documentos[$i]) {
+             print("<h2 class=\"danger text-danger text-center\" >Hubo un error</h2>");
+             $existe=true;
+            }        
+         }
+         if ($existe) {
+            
+         }else{
+             if (rename("$dir$fichero","$dir$nombre")) {
+                 print( "<h2 class=\"success text-success text-center\">Nombre Cambiado</h2>");
+                 $existe=true;
+             }else{
+                 print("<h2 class=\"danger text-danger text-center\" >Hubo un error</h2>");
+             }
+         }
     }
 
 ?>
