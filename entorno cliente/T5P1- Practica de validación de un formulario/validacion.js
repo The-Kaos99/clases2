@@ -67,12 +67,11 @@ function validar() {
     document.getElementById("hora").focus();
     return false;
   }
-  //confirm("Estas seguro de que quieres mannr los datos??");
-  if (confirm("Estas seguro de que quieres mandar los datos??")==flase) {
-   
+  if (!confirm("Estas seguro de que quieres mandar los datos??")) {
+    //alert("Hay un problema");
     return false;
   } 
-  alert("Hay un problema");
+ 
   return true;
 }
 
