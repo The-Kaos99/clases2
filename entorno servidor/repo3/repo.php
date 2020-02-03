@@ -31,10 +31,10 @@
             <div class="col-2 pl-5"><button name="enviar" type="submit" class="btn btn-primary">Enviar</button></div>
             <div class="col-6">
             <?php
-/*if (isset($_COOKIE['operacion'])){
+if (isset($_COOKIE['operacion'])){
   $galleta=$_COOKIE['operacion'];
   print("<h4>$galleta</h4>");
-}*/
+}
 ?>
             </div>
           </div>
@@ -90,11 +90,6 @@ if (isset($_REQUEST["enviar"])){
   }else{
     print("<h2 class=\"danger text-danger text-center\" >Hubo un error </h2>");
  } 
-}
-if (isset($_COOKIE['operacion'])){
-  $galleta=$_COOKIE['operacion'];
-  print("<h4>$galleta</h4>");
-}else {
 }
 $imagenes=scandir("img/");
 $documentos=scandir("doc/");
