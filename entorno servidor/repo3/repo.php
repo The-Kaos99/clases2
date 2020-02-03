@@ -28,7 +28,7 @@
         <form action="repo.php" method="post" enctype="multipart/form-data">
           <div class="row">
             <div class="col-4"><input type="file" name="fichero" id="fichero" class="btn btn-warning text-info"></div>
-            <div class="col-2"><button name="enviar" type="submit" class="btn btn-primary">Enviar</button></div>
+            <div class="col-2 pl-5"><button name="enviar" type="submit" class="btn btn-primary">Enviar</button></div>
             <div class="col-6">
             <?php
 if (isset($_COOKIE['operacion'])){
