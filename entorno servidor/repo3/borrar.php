@@ -30,12 +30,12 @@ if (is_dir ($fichero)) {
     //print("<h2 class=\"text-danger text-center\" >Es un directorio</h2>");
     if (rmdir ($fichero)) {
         print( "<h2 class=\"text-success text-center\">Directorio eliminado correctamente</h2>");
-        setcookie("operacion","Se realizo la eliminacion del  directorio $fichero",0,"/");
+        setcookie("operacion","Se realizo la eliminacion del  directorio $fichero",0);
     }
 }else{
 if (unlink("$fichero")){
     print( "<h2 class=\"text-success text-center\">Fichero eliminado correctamente</h2>");
-    setcookie("operacion","Se realizo el borrado del fichero $fichero",0,"/");
+    setcookie("operacion","Se realizo el borrado del fichero $fichero",0);
 }else{
     print("<h2 class=\"text-danger text-center\" >Hubo un error con el borrado </h2>");
 }}

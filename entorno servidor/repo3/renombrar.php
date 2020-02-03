@@ -49,7 +49,7 @@
         }else{
             if (rename("$dir$fichero","$dir$nombre")) {
                 print( "<h2 class=\"success text-success text-center\">Nombre Cambiado</h2>");
-                setcookie("operacion","Se realizo el cambio de nombre de \"$fichero\" a \"$nombre\"",0,"/");
+                setcookie("operacion","Se realizo el cambio de nombre de \"$fichero\" a \"$nombre\"",0);
                 $existe=true;
             }else{
                 print("<h2 class=\"danger text-danger text-center\" >Hubo un error</h2>");
@@ -67,7 +67,7 @@
          }else{
              if (rename("$dir$fichero","$dir$nombre")) {
                  print( "<h2 class=\"success text-success text-center\">Nombre Cambiado</h2>");
-                 setcookie("operacion","Se realizo el cambio de nombre de \"$fichero\" a \"$nombre\"",0,"/");
+                 setcookie("operacion","Se realizo el cambio de nombre de \"$fichero\" a \"$nombre\"",0);
                  $existe=true;
              }else{
                  print("<h2 class=\"danger text-danger text-center\" >Hubo un error</h2>");

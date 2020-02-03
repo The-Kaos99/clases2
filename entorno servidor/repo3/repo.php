@@ -31,13 +31,11 @@
             <div class="col-2 pl-5"><button name="enviar" type="submit" class="btn btn-primary">Enviar</button></div>
             <div class="col-6">
             <?php
-if (isset($_COOKIE['operacion'])){
-foreach($_COOKIE as $value){
-  print("<h4>$value</h4>");
-}}
+/*if (isset($_COOKIE['operacion'])){
+  $galleta=$_COOKIE['operacion'];
+  print("<h4>$galleta</h4>");
+}*/
 ?>
-
-
             </div>
           </div>
           <div class="row">
@@ -72,6 +70,7 @@ if (isset($_REQUEST["enviar"])){
             move_uploaded_file ($_FILES['fichero']['tmp_name'],$nombreCompleto);
             print( "<h2 class=\"text-success text-center\">Fichero subido con el nombre: $nombreFichero</h2>");
             print (" <p><a href=\"$nombreCompleto\" class=\"text-primary\">$nombreCompleto</a></p>");
+            setcookie("operacion","Fichero subido con el nombre: $nombreFichero",0,"/");
             }
         }
         if (preg_match("/^image/",$archivo2)) {
@@ -82,7 +81,7 @@ if (isset($_REQUEST["enviar"])){
             $nombreCompleto = $directorio.$nombreFichero;
             move_uploaded_file ($_FILES['fichero']['tmp_name'],$nombreCompleto);
             print( "<h2 class=\"text-success text-center\">Fichero subido con el nombre: $nombreFichero</h2>");
-             //print ("<img src=\"$nombreCompleto\" alt=\"\">");
+            setcookie("operacion","Fichero subido con el nombre: $nombreFichero",0);
             }
         }
      } else {
@@ -91,6 +90,11 @@ if (isset($_REQUEST["enviar"])){
   }else{
     print("<h2 class=\"danger text-danger text-center\" >Hubo un error </h2>");
  } 
+}
+if (isset($_COOKIE['operacion'])){
+  $galleta=$_COOKIE['operacion'];
+  print("<h4>$galleta</h4>");
+}else {
 }
 $imagenes=scandir("img/");
 $documentos=scandir("doc/");
