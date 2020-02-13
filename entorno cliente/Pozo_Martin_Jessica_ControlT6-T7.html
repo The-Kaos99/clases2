@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jessica</title>
+    <style>
+        .form1 {
+            display: inline-block;
+            position: absolute;
+            float: left;
+            width: 200px;
+            left: 10px;
+        }
+        
+        .form2 {
+            position: absolute;
+            top: 200px;
+            left: 10px;
+            width: 200px;
+        }
+        
+        .form3 {
+            position: absolute;
+            top: 8px;
+            left: 250px;
+        }
+    </style>
+    <script>
+        // función para validar el formulario del administrador.
+        function validar() {
+            // Sacamos los valores de usuario y clave.
+            usuarioAdmin = document.getElementById("usuario").value;
+            claveAdmin = document.getElementById("clave").value;
+
+            // Variables donde guardamos el usuario y la clave;
+            valorUsuarioAdmin = "Admin";
+            valorClaveUsuarioAdmin = "todopoderoso";
+
+            // Comprobamos si el usuario no coincide, si no coincide ponemos el borde en rojo y mandamos el foco al campo.
+            // Si pasa la primera comprobación, comprobamos si no coincide la clave, en su caso ponemos el borde en rojo y mandamos el foco al campo.
+            // Por último, si los dos if son falsos, ponemos los dos bordes en verde y mostramos el boton "btnCambiar". 
+            if (usuarioAdmin != valorUsuarioAdmin) {
+                document.getElementById("usuario").style.border = "2px solid red";
+                document.getElementById("usuario").focus();
+            } else if (claveAdmin != valorClaveUsuarioAdmin) {
+                document.getElementById("usuario").style.border = "2px solid green";
+                document.getElementById("clave").focus();
+                document.getElementById("clave").style.border = "2px solid red";
+            } else {
+                document.getElementById("usuario").style.border = "2px solid green";
+                document.getElementById("clave").style.border = "2px solid green";
+                document.getElementById("btnCambiar").style.display = "block";
+            }
+        }
+
+        // Función para cambiar el idioma.
+        function cambiarIdioma() {
+            // Declaramos todas las variables con los idiomas.
+            espNombre = "Nombre";
+            espApellidos = "Apellidos";
+            espCodigoVeri = "Código Verificación";
+            engNombre = "Name";
+            engApellidos = "Surnames";
+            engCodigoVeri = "Verification Code";
+
+            espUsuario = "Usuario Administrador";
+            engUsuario = "Administrator";
+            espClaveAcceso = "Clave de Acceso";
+            engClaveAcceso = "Password";
+
+            espCambiar = "Cambiar a español";
+            engCambiar = "Cambiar a ingles";
+
+            // Nos traemos del vector form los tres formularios.
+            form1Obj = document.getElementsByTagName("form")[0];
+            form2Obj = document.getElementsByTagName("form")[1];
+            form3Obj = document.getElementsByTagName("form")[2];
+
+            // Sacamos los hijos que necesitamos de cada padre.
+            lb1 = form1Obj.childNodes[1];
+            lb2 = form1Obj.childNodes[7];
+            lb3 = form1Obj.childNodes[13];
+
+            lb4 = form2Obj.childNodes[1];
+            lb5 = form2Obj.childNodes[7];
+
+            bt1 = form3Obj.childNodes[1];
+
+            // Comprobamos si el label primero esta en español (Solo comprobamos unos porque los demás estarán en el mismo idioma), si esta en español pasamos todos los label a ingles y pasamos el botón a "Cambiar a ingles".
+            // En caso contrario, pasamos los label a español y el botón a "Cambiar a español"
+            if (lb1.innerHTML == espNombre) {
+                lb1.innerHTML = engNombre;
+                lb2.innerHTML = engApellidos;
+                lb3.innerHTML = engCodigoVeri;
+                lb4.innerHTML = engUsuario;
+                lb5.innerHTML = engClaveAcceso;
+                bt1.value = espCambiar;
+
+            } else {
+                lb1.innerHTML = espNombre;
+                lb2.innerHTML = espApellidos;
+                lb3.innerHTML = espCodigoVeri;
+                lb4.innerHTML = espUsuario;
+                lb5.innerHTML = espClaveAcceso;
+                bt1.value = engCambiar;
+            }
+        }
+
+        function cerrar() {
+            document.getElementById("btnCambiar").style.display = "none";
+            document.getElementById("usuario").value = "";
+            document.getElementById("clave").value = "";
+        }
+    </script>
+</head>
+
+<body>
+    <fieldset class="form1">
+        <legend>Formulario 1</legend>
+        <form name="form1" id="form1">
+            <label for="nombre" id="labelNombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre">
+            <br>
+            <label for="apellidos" id="labelApellidos">Apellidos</label>
+            <input type="text" name="apellidos" id="apellidos">
+            <br>
+            <label for="codigo" id="labelCodigo">Código Verificación</label>
+            <input type="number" name="codigo" id="codigo">
+            <br>
+        </form>
+    </fieldset>
+    <fieldset class="form2">
+        <legend>Formulario 2</legend>
+        <form name="form2" id="form2">
+            <label for="usuario" id="labelUsuario">Usuario Administrador</label>
+            <input type="text" name="usuario" id="usuario">
+            <br>
+            <label for="clave" id="labelCodigo">Clave de acceso</label>
+            <input type="password" name="clave" id="clave">
+            <br>
+            <input type="button" value="OK" onclick="validar()">
+            <input type="button" value="Cerrar" onclick="cerrar()">
+        </form>
+    </fieldset>
+    <fieldset class="form3">
+        <legend>Formulario 3</legend>
+        <form name="form3">
+            <input id="btnCambiar" type="button" style="display:none" value="Cambiar a Ingles" onclick="cambiarIdioma()">
+        </form>
+    </fieldset>
+</body>
+
+</html>
