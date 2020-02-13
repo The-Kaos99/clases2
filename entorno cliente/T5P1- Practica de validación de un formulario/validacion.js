@@ -68,7 +68,7 @@ function validar() {
     return false;
   }
   if (!confirm("Estas seguro de que quieres mandar los datos??")) {
-    //alert("Hay un problema");
+    
     return false;
   } 
  
