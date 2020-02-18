@@ -80,30 +80,34 @@ function vetana(total, parejas, trios, poker, tparejas, ttrios, tpoker) {
     ventana.document.bgColor = fondo;
     ventana.setTimeout(close, 10000);
 }
-var contador = 0;
+var contador = 1;
 function calcularletras() {
     var letras = ["B", "C", "D", "F", "G", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    var letrasactuales = document.getElementById("letrasactuales").value;
-    var letrasActuales_array = Array.from(letrasactuales);
-    for (let index = 0; index < letrasActuales_array.length; index++) {
-        alert( letrasActuales_array[index]);
-        
-    }
+    var combinaciones = [];
+    var letrasactuales = document.getElementById("letrasactuales").value.toUpperCase();
+    var letrasqueridas = document.getElementById("letrasqueridas").value.toUpperCase();
     for (let index = 0; index < letras.length; index++) {
         for (let index2 = 0; index2 < letras.length; index2++) {
             for (let index3 = 0; index3 < letras.length; index3++) {
+                var matricula = letras[index] + letras[index2] + letras[index3];
+                combinaciones[contador] = matricula;
                 contador++;
-                var newt = document.createElement("div");
-                newt.setAttribute("class", "col-12 text-info");
-                var t = document.createTextNode(letras[index] + letras[index2] + letras[index3]+" : "+contador);
-                newt.appendChild(t);
-                document.getElementById("prueba").appendChild(newt);
-
             }
 
         }
     }
-}
-function igualdad(i,i2,i3,letras) {
-    
+
+    var actuales = combinaciones.indexOf(letrasactuales);
+    var queridas = combinaciones.indexOf(letrasqueridas) + 1;
+    var combi = combinaciones.length;    
+    var operacion = queridas-actuales ;
+    var newt = document.createElement("div");
+    newt.setAttribute("class", "col-12 text-info");
+    var texto = " Entonces el total de combinaciones de letras que tienes que esperar es de alrededor de : ";
+    var t = document.createTextNode("Hay un total  de " + combi + " posiblmes combinaciones tu estas en la combinacion: " + actuales + " y quieres llegar a " + queridas + texto + operacion);
+    newt.appendChild(t);
+    document.getElementById("prueba").appendChild(newt);
+    final = 0, contador = 1, opauxiliar = 0, opauxiliar2 = 0, actuales = 0;
+    combinaciones = [];
+    letras = [];
 }
