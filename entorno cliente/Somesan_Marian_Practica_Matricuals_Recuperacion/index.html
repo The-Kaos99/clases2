@@ -15,10 +15,9 @@
 <body class="bg-secondary">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <h1 class="text-primary center">Recuperacion </h1>
             </div>
-            <div class="col-6" id="prueba"></div>
         </div>
         <div class="row">
             <form action="" method="get">
@@ -32,9 +31,23 @@
                 </div>
 
             </form>
-
-
         </div>
+        <div class="row pt-5">
+            <form action="" method="get">
+                <div class="col-6">
+                    <p>Letras actuales </p>
+                    <input type="text" name="" id="letrasactuales">
+                    <p>Letras queridas </p>
+                    <input type="text" name="" id="letrasqueridas">
+                </div>
+                <div class="col-6">
+                    <input type="button" value="Calcular Letras" onclick="calcularletras()">
+
+                </div>
+
+            </form>
+        </div>
+        <div class="row" id="prueba"></div>
     </div>
 
 
