@@ -60,7 +60,7 @@ function calcular() {
 }
 
 function vetana(total, parejas, trios, poker, tparejas, ttrios, tpoker) {
-    var ventana = window.open("", "", "width=500 height=300");
+    var ventana = window.open("", "", "width=300 height=300");
     var fondo = "#3EDD2E";
     ventana.document.write("<h1>Hola es un titulo</h1>");
     ventana.document.write("<p>Parejas : " + parejas + "</p>");
@@ -94,7 +94,7 @@ function calcularletras() {
 
     var actuales = combinaciones.indexOf(letrasactuales);
     var queridas = combinaciones.indexOf(letrasqueridas) + 1;
-    var combi = combinaciones.length;    
+    var combi = combinaciones.length;     
     var operacion = queridas-actuales ;
     var newt = document.createElement("div");
     newt.setAttribute("class", "col-12 text-info");
@@ -105,4 +105,4 @@ function calcularletras() {
     final = 0, contador = 1, opauxiliar = 0, opauxiliar2 = 0, actuales = 0;
     combinaciones = [];
     letras = [];
-}
+} 
