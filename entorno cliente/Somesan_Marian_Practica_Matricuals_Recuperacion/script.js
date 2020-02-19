@@ -9,11 +9,6 @@ function calcular() {
         var num_array = Array.from(auxiliar);
         if (num_array.length <= 4) {
             for (var index = 0; index < num_array.length; index++) {
-                /*var newt = document.createElement("div");
-                newt.setAttribute("class", "bg-secondary border border-dark pt-5");
-                var t = document.createTextNode("El numero " + num_array[index]);
-                newt.appendChild(t);
-                // document.getElementById("prueba").appendChild(newt);*/
                 var indices = [];
                 var element = num_array[index];
                 var idx = num_array.indexOf(element);
@@ -65,7 +60,7 @@ function calcular() {
 }
 
 function vetana(total, parejas, trios, poker, tparejas, ttrios, tpoker) {
-    var ventana = window.open("", "", "width=300 height=300");
+    var ventana = window.open("", "", "width=500 height=300");
     var fondo = "#3EDD2E";
     ventana.document.write("<h1>Hola es un titulo</h1>");
     ventana.document.write("<p>Parejas : " + parejas + "</p>");
