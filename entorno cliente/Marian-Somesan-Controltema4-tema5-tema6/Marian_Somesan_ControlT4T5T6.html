@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marian Somesan Examen</title>
+</head>
+
+<body>
+    <script src="javascript.js"></script>
+    <center>
+        <h1>Examen 21/02/2020 Marian Somesan</h1>
+        <form name="form1" id="form1">
+            <label for="nombre" id="labelNombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre">
+            <br><br>
+            <label for="apellidos" id="labelApellidos">Apellidos</label>
+            <input type="text" name="apellidos" id="apellidos">
+            <br><br>
+            <label for="codigo" id="labelCodigo">Código Verificación</label>
+            <input type="password" name="codigo" id="codigo">
+            
+        </form>
+        <br><br><br><br>
+        <form name="form2" id="form2">
+
+            <label for="usuario" id="labelUsuario">Administrador</label>
+            <input type="text" name="usuario" id="usuario">
+            <br><br>
+            <label for="clave" id="labelCodigo">Contraseña</label>
+            <input type="password" name="clave" id="clave">
+            <br><br>
+            <input type="button" value="OK" onclick="validar()">
+            <input type="button" value="Cerrar" onclick="cerrar()">
+        </form>
+        <br><br><br><br>
+        <h4>Traduccion</h4>
+        <form name="form3">
+            <input id="btnCambiar" type="button" style="display:none" value="Cambiar a Ingles"
+                onclick="cambiarIdioma()">
+        </form>
+    </center>
+</body>
+
+
+</html>

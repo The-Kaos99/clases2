@@ -14,14 +14,14 @@
             width: 200px;
             left: 10px;
         }
-        
+
         .form2 {
             position: absolute;
             top: 200px;
             left: 10px;
             width: 200px;
         }
-        
+
         .form3 {
             position: absolute;
             top: 8px;
@@ -30,29 +30,30 @@
     </style>
     <script>
         // función para validar el formulario del administrador.
+
         function validar() {
-            // Sacamos los valores de usuario y clave.
-            usuarioAdmin = document.getElementById("usuario").value;
-            claveAdmin = document.getElementById("clave").value;
+            if (document.getElementById("nombre").value != "" && document.getElementById("apellidos").value != "" && document.getElementById("apellidos").value != "" && document.getElementById("codigo").value != "") {
+                alert("Todo esta lleno");
 
-            // Variables del usuario y la contraseña
-            valorUsuarioAdmin = "admin";
-            valorClaveUsuarioAdmin = "admin";
+                // Sacamos los valores de usuario y clave.
+                usuarioAdmin = document.getElementById("usuario").value;
+                claveAdmin = document.getElementById("clave").value;
 
-            // Comprobamos si el usuario no coincide, si no coincide ponemos el borde en rojo y mandamos el foco al campo.
-            // Si pasa la primera comprobación, comprobamos si no coincide la clave, en su caso ponemos el borde en rojo y mandamos el foco al campo.
-            // Por último, si los dos if son falsos, ponemos los dos bordes en verde y mostramos el boton "btnCambiar". 
-            if (usuarioAdmin != valorUsuarioAdmin) {
-                document.getElementById("usuario").style.border = "2px solid red";
-                document.getElementById("usuario").focus();
-            } else if (claveAdmin != valorClaveUsuarioAdmin) {
-                document.getElementById("usuario").style.border = "2px solid green";
-                document.getElementById("clave").focus();
-                document.getElementById("clave").style.border = "2px solid red";
-            } else {
-                document.getElementById("usuario").style.border = "2px solid green";
-                document.getElementById("clave").style.border = "2px solid green";
-                document.getElementById("btnCambiar").style.display = "block";
+                // Variables del usuario y la contraseña
+                userAdmin = "Admin";
+                ClaveDefinida = "todopoderoso";
+
+                // Comprobamos si el usuario no coincide, si no coincide ponemos el borde en rojo y mandamos el foco al campo.
+                // Si pasa la primera comprobación, comprobamos si no coincide la clave, en su caso ponemos el borde en rojo y mandamos el foco al campo.
+                // Por último, si los dos if son falsos, ponemos los dos bordes en verde y mostramos el boton "btnCambiar". 
+                if (usuarioAdmin != userAdmin) {
+                    
+                    document.getElementById("usuario").focus();
+                } else if (claveAdmin != ClaveDefinida) {
+                    document.getElementById("clave").focus();
+                } else {
+                    document.getElementById("btnCambiar").style.display = "block";
+                }
             }
         }
 
@@ -63,7 +64,7 @@
             espApellidos = "Apellidos";
             espCodigoVeri = "Código Verificación";
             engNombre = "Name";
-            engApellidos = "Surnames";
+            engApellidos = "Surname";
             engCodigoVeri = "Verification Code";
 
             espUsuario = "Usuario Administrador";
@@ -149,8 +150,10 @@
     <fieldset class="form3">
         <legend>Formulario 3</legend>
         <form name="form3">
-            <input id="btnCambiar" type="button" style="display:none" value="Cambiar a Ingles" onclick="cambiarIdioma()">
+            <input id="btnCambiar" type="button" style="display:none" value="Cambiar a Ingles"
+                onclick="cambiarIdioma()">
         </form>
     </fieldset>
 </body>
+
 </html>
