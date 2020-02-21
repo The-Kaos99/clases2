@@ -17,15 +17,17 @@ require("bd.php");
 if (isset($_REQUEST["enviar"])) {
 
     if (isset($_REQUEST["nombreusuario"])) {
-        printf("Fallo de conexion : ");
+        //printf("Fallo de conexion : ");
         if (isset($_REQUEST["Password"])) {
+          if ($_REQUEST["Password"]!="" && $_REQUEST["nombreusuario"]!="") {
             $contra = mysqli_real_escape_string($enlace, md5($_REQUEST["Password"]));
             $username = mysqli_real_escape_string($enlace, $_REQUEST["nombreusuario"]);
             if (mysqli_query($enlace, "INSERT into usuarios (username,nombre,password ) VALUES ('$username','','$contra')")) {
                 printf("%d fila insertada.\n", mysqli_affected_rows($enlace));
+                printf("Usuario creado corectament");
             }
+          } 
         }
-
     }
 }
 mysqli_close($enlace);
