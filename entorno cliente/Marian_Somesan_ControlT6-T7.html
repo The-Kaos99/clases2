@@ -58,7 +58,7 @@
 
         // Función para cambiar el idioma.
         function cambiarIdioma() {
-            // Declaramos todas las variables con los idiomas.
+            // Declaramos las variables con los idiomas.
             espNombre = "Nombre";
             espApellidos = "Apellidos";
             espCodigoVeri = "Código Verificación";
@@ -74,12 +74,12 @@
             espCambiar = "Cambiar a español";
             engCambiar = "Cambiar a ingles";
 
-            // Nos traemos del vector form los tres formularios.
+            // Nos traemos del vector form para los tres formularios.
             form1Obj = document.getElementsByTagName("form")[0];
             form2Obj = document.getElementsByTagName("form")[1];
             form3Obj = document.getElementsByTagName("form")[2];
 
-            // Sacamos los hijos que necesitamos de cada padre.
+            // Sacamos los hijos que necesitamos 
             lb1 = form1Obj.childNodes[1];
             lb2 = form1Obj.childNodes[7];
             lb3 = form1Obj.childNodes[13];
@@ -89,8 +89,9 @@
 
             bt1 = form3Obj.childNodes[1];
 
-            // Comprobamos si el label primero esta en español (Solo comprobamos unos porque los demás estarán en el mismo idioma), si esta en español pasamos todos los label a ingles y pasamos el botón a "Cambiar a ingles".
-            // En caso contrario, pasamos los label a español y el botón a "Cambiar a español"
+            /* Comprobamos si el label primero esta en español (Solo comprobamos unos porque los demás estarán en el mismo idioma), 
+            si esta en español pasamos todos los label a ingles y pasamos el botón a "Cambiar a ingles".
+            En caso contrario, pasamos los label a español y el botón a "Cambiar a español"*/
             if (lb1.innerHTML == espNombre) {
                 lb1.innerHTML = engNombre;
                 lb2.innerHTML = engApellidos;
