@@ -13,22 +13,35 @@
 </form>
 
 <?php
-require("bd.php");
-if (isset($_REQUEST["enviar"])) {
+require "bd.php";
 
-    if (isset($_REQUEST["nombreusuario"])) {
-        //printf("Fallo de conexion : ");
-        if (isset($_REQUEST["Password"])) {
-          if ($_REQUEST["Password"]!="" && $_REQUEST["nombreusuario"]!="") {
-            $contra = mysqli_real_escape_string($enlace, md5($_REQUEST["Password"]));
-            $username = mysqli_real_escape_string($enlace, $_REQUEST["nombreusuario"]);
-            if (mysqli_query($enlace, "INSERT into usuarios (username,nombre,password ) VALUES ('$username','','$contra')")) {
-                printf("%d fila insertada.\n", mysqli_affected_rows($enlace));
-                printf("Usuario creado corectament");
-            }
-          } 
-        }
-    }
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
 }
+if (isset($_SESSION["user"])) {
+    $user = $_SESSION["user"];
+
+    if ($user == "admin") {
+        if (isset($_REQUEST["enviar"])) {
+            if (isset($_REQUEST["nombreusuario"])) {
+                //printf("Fallo de conexion : ");
+                if (isset($_REQUEST["Password"])) {
+                    if ($_REQUEST["Password"] != "" && $_REQUEST["nombreusuario"] != "") {
+                        $contra = mysqli_real_escape_string($enlace, md5($_REQUEST["Password"]));
+                        $username = mysqli_real_escape_string($enlace, $_REQUEST["nombreusuario"]);
+                        if (mysqli_query($enlace, "INSERT into usuarios (username,nombre,password ) VALUES ('$username','','$contra')")) {
+                            $estructura = './'.$_REQUEST["nombreusuario"];
+                            if (!mkdir($estructura, 0777, true)) {
+                                die('Fallo al crear las carpetas...');
+                            }
+                            /* printf("%d fila insertada.\n", mysqli_affected_rows($enlace));
+                            printf("Usuario creado corectament");*/
+                            $archivoActual = $_SERVER['PHP_SELF'];
+                            header("refresh:0;url=" . $archivoActual);
+                        }
+                    }
+                }
+            }
+        }}}
 mysqli_close($enlace);
 ?>

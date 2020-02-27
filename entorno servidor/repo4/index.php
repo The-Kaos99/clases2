@@ -11,36 +11,57 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+<?php
+session_start();
+if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+}
+?>
 
 <body>
   <header class="container-fluid bg-dark">
-    <h1 class="text-center text-info">Panel de Control</h1>
+    <div class="row">
+      <div class="col-1 pt-3">
+        <a href="logout.php">Salir</a>
+      </div>
+      <div class="col-11">
+        <h1 class="text-center text-info">Panel de Control</h1>
+      </div>
+
+    </div>
+
   </header>
-  <?php
-    session_start();
-    if (!isset($_SESSION["user"])) {
-      header("Location: login.php");
-    }
-    if (isset($_SESSION["user"])) {
-      $user=$_SESSION["user"];
-    
-    if ( $user=="admin") {?> 
-     
+
+
   <div class="container">
     <div class="row">
       <div class="col-3">
-      <?php
-     include_once "listausuarios.php";
-    
-?> 
+        <?php 
+        if (isset($_SESSION["user"])) {
+            $user = $_SESSION["user"];
+
+            if ($user == "admin") {
+               include_once "listausuarios.php";
+            }else{
+              include_once "subir.php";
+            }
+          }
+        ?>
       </div>
       <div class="col-3"></div>
       <div class="col-3"></div>
       <div class="col-3">
-<?php
-     include_once "registro.php";
-    }}
-?>      </div>
+        <?php 
+        if (isset($_SESSION["user"])) {
+            $user = $_SESSION["user"];
+
+            if ($user == "admin") {
+               include_once "registro.php";
+            }
+          }
+        ?>
+      </div>
+
     </div>
     <div class="row"></div>
     <div class="row"></div>

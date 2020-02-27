@@ -13,30 +13,44 @@
                 </form>
 
 <?php
-require_once("bd.php");
+require_once "bd.php";
 session_start();
 if (isset($_REQUEST["enviar"])) {
     if (isset($_REQUEST["user"])) {
-       // printf("Fallo de conexion : ");
+        // printf("Fallo de conexion : ");
         if (isset($_REQUEST["password"])) {
-            $username=mysqli_real_escape_string($enlace, $_REQUEST["user"]);
-            $password=mysqli_real_escape_string($enlace, md5($_REQUEST["password"]));
+            $username = mysqli_real_escape_string($enlace, $_REQUEST["user"]);
+            $password = mysqli_real_escape_string($enlace, md5($_REQUEST["password"]));
             $sql = "SELECT  * FROM usuarios where username='$username' AND password='$password'";
             $result = mysqli_query($enlace, $sql);
             while ($row = mysqli_fetch_array($result)) {
-            /*Imprimir campo por indice*/
+                /*Imprimir campo por indice*/
                 $usuario2 = $row[1];
                 print($row[0] . "<br>");
-                if ($username==$usuario2) {
+                if ($username == $usuario2) {
                     print("Eres el puto admin");
 
                 }
-            }           
+            }
         }
 
     }
 }
 mysqli_close($enlace);
+
+if (isset($_SESSION["user"])) {
+    $user = $_SESSION["user"];
+
+    if ($user == "admin") {
+        include_once "listausuarios.php";
+
+        include_once "registro.php";
+    }
+}
 ?>
+
+
+
+
 
 

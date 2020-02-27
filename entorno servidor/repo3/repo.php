@@ -24,19 +24,12 @@
   </header>
   <div class="container">
     <div class="row">
-      <div class="col-12 pt-5 pb-5">
+      <div class="col-12 p-5">
         <form action="repo.php" method="post" enctype="multipart/form-data">
           <div class="row">
             <div class="col-4"><input type="file" name="fichero" id="fichero" class="btn btn-warning text-info"></div>
             <div class="col-2 pl-5"><button name="enviar" type="submit" class="btn btn-primary">Enviar</button></div>
-            <div class="col-6">
-            <?php
-if (isset($_COOKIE['operacion'])){
-  $galleta=$_COOKIE['operacion'];
-  print("<h4>$galleta</h4>");
-}
-?>
-            </div>
+            <div class="col-6"></div>
           </div>
           <div class="row">
             <div class="col-6"><a href="img/" class="text-white bg-dark ">Imagenes</a></div>
