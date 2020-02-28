@@ -49,14 +49,15 @@ if (!isset($_SESSION["user"])) {
         ?>
       </div>
       <div class="col-3"></div>
-      <div class="col-3"></div>
-      <div class="col-3">
+      <div class="col-6">
         <?php 
         if (isset($_SESSION["user"])) {
             $user = $_SESSION["user"];
 
             if ($user == "admin") {
                include_once "registro.php";
+            }else{
+              include_once "listadoarchivos.php";
             }
           }
         ?>
