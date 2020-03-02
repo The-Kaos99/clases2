@@ -44,13 +44,13 @@ if (isset($_REQUEST["enviar"])) {
     if (isset($_REQUEST["user"])) {
         if (isset($_REQUEST["password"])) {
             $username=mysqli_real_escape_string($enlace, $_REQUEST["user"]);
-            $password=mysqli_real_escape_string($enlace, md5($_REQUEST["password"]));
+            $password=mysqli_real_escape_string($enlace, $_REQUEST["password"]);
+            $password=md5($password);
             $sql = "SELECT  * FROM usuarios where username='$username' AND password='$password'";
             $result = mysqli_query($enlace, $sql);
             while ($row = mysqli_fetch_array($result)) {
             /*Imprimir campo por indice*/
                 $usuario2 = $row[0];
-                print($row[0] . "<br>");
                 if ($username==$usuario2) {
                     $_SESSION["user"]=$username;                   
                     header("Location: index.php");

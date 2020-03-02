@@ -27,7 +27,8 @@ if (isset($_SESSION["user"])) {
                 //printf("Fallo de conexion : ");
                 if (isset($_REQUEST["Password"])) {
                     if ($_REQUEST["Password"] != "" && $_REQUEST["nombreusuario"] != "") {
-                        $contra = mysqli_real_escape_string($enlace, md5($_REQUEST["Password"]));
+                        $contra = mysqli_real_escape_string($enlace,$_REQUEST["Password"]);
+                        $contra= md5($contra);
                         $username = mysqli_real_escape_string($enlace, $_REQUEST["nombreusuario"]);
                         if (mysqli_query($enlace, "INSERT into usuarios (username,nombre,password ) VALUES ('$username','','$contra')")) {
                             $estructura = './'.$_REQUEST["nombreusuario"];
