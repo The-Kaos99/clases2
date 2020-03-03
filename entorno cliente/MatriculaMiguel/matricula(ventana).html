@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Propabilidades</title>
+</head>
+
+<body>
+    <script>
+        var numeros = new Array();
+        //Creamos el array con todas las combinaciones quitando los 0
+        for (var n = 1000; n <= 9999; n++) {
+
+            numeros.push(n);
+
+        }
+        //array combinaciones
+        var poker = new Array();
+        var trios = new Array();
+        var parejas = new Array();
+        var escalerasimple = new Array();
+        var escalera = new Array();
+
+        for (var i = 0; i < numeros.length; i++) {
+            var cadena = numeros[i].toString();
+            var numerosarray = Array.from(cadena);
+
+            //Contadores para parejas y trios
+            var cont1 = 0;
+            var cont2 = 0;
+            var cont3 = 0;
+
+
+            for (var j = 0; j <= numerosarray.length; j++) {
+                if (numerosarray[0] == numerosarray[j]) {
+                    cont1++;
+                }
+                if (numerosarray[1] == numerosarray[j]) {
+                    cont2++;
+                }
+                if (numerosarray[2] == numerosarray[j]) {
+                    cont3++;
+                }
+            }
+            //trios
+            if (cont1 == 3 || cont2 == 3) {
+                trios.push(numeros[i]);
+
+            }
+
+            //Parejas
+            if (cont1 == 2 && cont2 == 2 && cont3 == 2) {
+
+                parejas.push(numeros[i]);
+            }
+
+            //Poker
+            if (numerosarray[0] == numerosarray[1] && numerosarray[0] == numerosarray[2] && numerosarray[0] == numerosarray[3]) {
+                poker.push(numeros[i]);
+            }
+            //Escaleras 
+            numerosarray.sort();//Ordenamos para hacerlo mas sencillo
+            //Escalera completa
+
+
+            var primero = parseInt(numerosarray[0]) + 3;
+            var segundo = parseInt(numerosarray[1]) + 2;
+            var tercero = parseInt(numerosarray[2]) + 1;
+            var cuarto = parseInt(numerosarray[3]);
+            if (primero == segundo && segundo == tercero && tercero == cuarto) {
+                escalera.push(numeros[i]);
+
+            }
+            //Escaleras simples
+
+            //Esto solo sirve teniendo en cuenta los 3 primeros valores
+            var primero = parseInt(numerosarray[0]) + 2;
+            var segundo = parseInt(numerosarray[1]) + 1;
+            var tercero = parseInt(numerosarray[2]);
+            if (primero == segundo && segundo == tercero) {
+                escalerasimple.push(numeros[i]);
+
+            }
+            //Ahora lo mismo para los tres ultimos y asi tendremos en cuenta todas las posibles escaleras simples
+            var primero = parseInt(numerosarray[1]) + 2;
+            var segundo = parseInt(numerosarray[2]) + 1;
+            var tercero = parseInt(numerosarray[3]);
+            if (primero == segundo && segundo == tercero) {
+                escalerasimple.push(numeros[i]);
+
+            }
+
+
+
+        }
+        document.write("<br>Porcentaje de dobles parejas : " + parejas.length/numeros.length*100+"%");
+        document.write("<br>Porcentaje de trios : " + trios.length/numeros.length*100+"%");
+        document.write("<br>Porcentaje de poker : " + poker.length/numeros.length*100+"%");
+        document.write("<br>Porcentaje de escaleras simples : " + escalerasimple.length/numeros.length*100+"%");
+        document.write("<br>Porcentaje de escaleras completas : " + escalera.length/numeros.length*100+"%");
+
+    </script>
+</body>
+
+</html>

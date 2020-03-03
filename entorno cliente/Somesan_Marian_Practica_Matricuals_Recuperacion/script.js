@@ -1,6 +1,6 @@
 var total = 0;
 var parejast = 0, triost = 0, pokert = 0;
-function calcular() {
+function calcular2() {
     var parejas = 0, trios = 0, poker = 0;
     var tipo = 0;
     var num = parseInt(document.getElementById("numero").value, 10);
