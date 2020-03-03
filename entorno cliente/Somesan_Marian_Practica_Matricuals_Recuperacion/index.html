@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -15,190 +15,196 @@
 <body class="bg-secondary">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h1 class="text-primary center">Recuperacion </h1>
+            <div class="col-12 bg-dark ">
+                <h1 class="text-primary text-center">Recuperacion</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
+    </div>
+    <div class="container">
+        <script>
 
-                <script>
-        
-                    //Ejercicio A
-                    var numeros = new Array();
-                    //Creamos el array con todas las combinaciones quitando los 0
-                    for (var n = 0; n < 1000; n++) {
-                        if (n<10){                
-                            var palabra ="000"+n.toString();
-                                         
-                        }
-                        else if(n>=10 && n<100){
-                            var palabra ="00"+n.toString(); 
-                        }
-                        else{
-                            var palabra ="0"+n.toString(); 
-                        }
-                        
-                        numeros.push(palabra);
-                       
-                        
-                        
-                    }
-                    for (var n = 1000; n <= 9999; n++) {           
-                            
-                            numeros.push(n.toString());
-                            
-                        
-                    }
-                    
-                    //array combinaciones
-                    var poker = new Array();
-                    var trios = new Array();
-                    var parejas = new Array();
-                    var escalerasimple = new Array();
-                    var escalera = new Array();
-            
-                    for (var i = 0; i < numeros.length; i++) {
-                    
-                        var numerosarray = Array.from(numeros[i]);
-            
-                        //Contadores para parejas y trios
-                        var cont1 = 0;
-                        var cont2 = 0;
-                        var cont3 = 0;
-            
-            
-                        for (var j = 0; j <= numerosarray.length; j++) {
-                            if (numerosarray[0] == numerosarray[j]) {
-                                cont1++;
-                            }
-                            if (numerosarray[1] == numerosarray[j]) {
-                                cont2++;
-                            }
-                            if (numerosarray[2] == numerosarray[j]) {
-                                cont3++;
-                            }
-                        }
-                        //trios
-                        if (cont1 == 3 || cont2 == 3) {
-                           
-                            trios.push(numeros[i]);
-            
-                        }
-            
-                        //Parejas
-                        if (cont1 == 2 && cont2 == 2 && cont3 == 2) {
-            
-                            parejas.push(numeros[i]);
-                        }
-            
-                        //Poker
-                        if (numerosarray[0] == numerosarray[1] && numerosarray[0] == numerosarray[2] && numerosarray[0] == numerosarray[3]) {
-                            poker.push(numeros[i]);
-                        }
-                        //Escaleras 
-                        numerosarray.sort();//Ordenamos para hacerlo mas sencillo
-                        //Escalera completa
-            
-            
-                        var primero = parseInt(numerosarray[0]) + 3;
-                        var segundo = parseInt(numerosarray[1]) + 2;
-                        var tercero = parseInt(numerosarray[2]) + 1;
-                        var cuarto = parseInt(numerosarray[3]);
-                        if (primero == segundo && segundo == tercero && tercero == cuarto) {
-                            escalera.push(numeros[i]);
-                           
-            
-                        }
-                        //Escaleras simples
-            
-                        //Esto solo sirve teniendo en cuenta los 3 primeros valores
-                        var primero = parseInt(numerosarray[0]) + 3;
-                        var segundo = parseInt(numerosarray[1]) + 2;
-                        var tercero = parseInt(numerosarray[2]) + 1;
-                        var cuarto = parseInt(numerosarray[3]);
-                        if (cuarto == segundo && segundo == tercero && primero != cuarto) {
-                            
-                            escalerasimple.push(numeros[i]);
-            
-                        }
-                        //Ahora lo mismo para los tres ultimos y asi tendremos en cuenta todas las posibles escaleras simples
-                        var primero = parseInt(numerosarray[0]) + 3;
-                        var segundo = parseInt(numerosarray[1]) + 2;
-                        var tercero = parseInt(numerosarray[2]) + 1;
-                        var cuarto = parseInt(numerosarray[3]);
-                        
-                        if (primero == segundo && segundo == tercero && primero != cuarto) {
-                            escalerasimple.push(numeros[i]);
-                           
-            
-                        }
-            
-                        //Ahora lo mismo pero teniendo en cuenta que puede haber dos valores iguales 
-                        var primero = parseInt(numerosarray[0]) + 2;
-                        var segundo = parseInt(numerosarray[1]) + 1;
-                        var tercero = parseInt(numerosarray[2]) + 1;
-                        var cuarto = parseInt(numerosarray[3]);
-                        
-                        if (primero == segundo && segundo == tercero && primero == cuarto) {
-                            escalerasimple.push(numeros[i]);
-                            
-                        }
-            
-            
-            
-                    }
-                    document.write("<br>Cantidad dobles parejas : " + parejas.length);
-                    document.write("<br>Cantidad trios : " + trios.length);
-                    document.write("<br>Cantidad poker : " + poker.length);
-                    document.write("<br>Cantidad escaleras simples : " + escalerasimple.length);
-                    document.write("<br>Cantidad escaleras completas : " + escalera.length);
-                    var num = parseInt(document.getElementById("numero").value, 10);
-                    function calcular() {
-                        for (var j = 0; j <= numerosarray.length; j++) {
-            if (numerosarray[0] == numerosarray[j]) {
-                cont1++;
+            //Ejercicio A
+            var numeros = new Array();
+            //Creamos el array con todas las combinaciones quitando los 0
+            for (var n = 0; n < 1000; n++) {
+                if (n < 10) {
+                    var palabra = "000" + n.toString();
+
+                }
+                else if (n >= 10 && n < 100) {
+                    var palabra = "00" + n.toString();
+                }
+                else {
+                    var palabra = "0" + n.toString();
+                }
+
+                numeros.push(palabra);
+
+
+
             }
-            if (numerosarray[1] == numerosarray[j]) {
-                cont2++;
+            for (var n = 1000; n <= 9999; n++) {
+
+                numeros.push(n.toString());
+
+
             }
-            if (numerosarray[2] == numerosarray[j]) {
-                cont3++;
+
+            //array combinaciones
+            var poker = new Array();
+            var trios = new Array();
+            var parejas = new Array();
+            var escalerasimple = new Array();
+            var escalera = new Array();
+
+            for (var i = 0; i < numeros.length; i++) {
+
+                var numerosarray = Array.from(numeros[i]);
+
+                //Contadores para parejas y trios
+                var cont1 = 0;
+                var cont2 = 0;
+                var cont3 = 0;
+
+
+                for (var j = 0; j <= numerosarray.length; j++) {
+                    if (numerosarray[0] == numerosarray[j]) {
+                        cont1++;
+                    }
+                    if (numerosarray[1] == numerosarray[j]) {
+                        cont2++;
+                    }
+                    if (numerosarray[2] == numerosarray[j]) {
+                        cont3++;
+                    }
+                }
+                //trios
+                if (cont1 == 3 || cont2 == 3) {
+
+                    trios.push(numeros[i]);
+
+                }
+
+                //Parejas
+                if (cont1 == 2 && cont2 == 2 && cont3 == 2) {
+
+                    parejas.push(numeros[i]);
+                }
+
+                //Poker
+                if (numerosarray[0] == numerosarray[1] && numerosarray[0] == numerosarray[2] && numerosarray[0] == numerosarray[3]) {
+                    poker.push(numeros[i]);
+                }
+                //Escaleras 
+                numerosarray.sort();//Ordenamos para hacerlo mas sencillo
+                //Escalera completa
+
+
+                var primero = parseInt(numerosarray[0]) + 3;
+                var segundo = parseInt(numerosarray[1]) + 2;
+                var tercero = parseInt(numerosarray[2]) + 1;
+                var cuarto = parseInt(numerosarray[3]);
+                if (primero == segundo && segundo == tercero && tercero == cuarto) {
+                    escalera.push(numeros[i]);
+
+
+                }
+                //Escaleras simples
+
+                //Esto solo sirve teniendo en cuenta los 3 primeros valores
+                var primero = parseInt(numerosarray[0]) + 3;
+                var segundo = parseInt(numerosarray[1]) + 2;
+                var tercero = parseInt(numerosarray[2]) + 1;
+                var cuarto = parseInt(numerosarray[3]);
+                if (cuarto == segundo && segundo == tercero && primero != cuarto) {
+
+                    escalerasimple.push(numeros[i]);
+
+                }
+                //Ahora lo mismo para los tres ultimos y asi tendremos en cuenta todas las posibles escaleras simples
+                var primero = parseInt(numerosarray[0]) + 3;
+                var segundo = parseInt(numerosarray[1]) + 2;
+                var tercero = parseInt(numerosarray[2]) + 1;
+                var cuarto = parseInt(numerosarray[3]);
+
+                if (primero == segundo && segundo == tercero && primero != cuarto) {
+                    escalerasimple.push(numeros[i]);
+
+
+                }
+
+                //Ahora lo mismo pero teniendo en cuenta que puede haber dos valores iguales 
+                var primero = parseInt(numerosarray[0]) + 2;
+                var segundo = parseInt(numerosarray[1]) + 1;
+                var tercero = parseInt(numerosarray[2]) + 1;
+                var cuarto = parseInt(numerosarray[3]);
+
+                if (primero == segundo && segundo == tercero && primero == cuarto) {
+                    escalerasimple.push(numeros[i]);
+
+                }
+
+
+
             }
-        }
-        //trios
-        if (cont1 == 3 || cont2 == 3) {
-            document.write("<br><br><br><h1>Tienes trio.</h1>");
-            
-        }
+            document.write("<br>Cantidad dobles parejas : " + parejas.length);
+            document.write("<br>Cantidad trios : " + trios.length);
+            document.write("<br>Cantidad escaleras simples : " + escalerasimple.length);
+            document.write("<br>Cantidad escaleras completas : " + escalera.length);
+            document.write("<br>Cantidad poker : " + poker.length);
+            var num = prompt("Introduzca 4 numeros para comprobar si tienes una combinacion: ");
+            // num=num.toUpperCase();
 
-        //Parejas
-        if (cont1 == 2 && cont2 == 2 && cont3 == 2) {
-            document.write("<br><br><br><h1>Tienes doble pareja</h1>");
-
-
-        }
-
-        //Poker
-        if (numerosarray[0] == numerosarray[1] && numerosarray[0] == numerosarray[2] && numerosarray[0] == numerosarray[3]) {
-            document.write("<br><br><br><h1>Tienes poker.</h1>");
-
-        }
-        //Escaleras 
-        numerosarray.sort();//Ordenamos para hacerlo mas sencillo
-        //Escalera completa
+            var numerosarray = Array.from(num);
+            var cont1 = 0;
+            var cont2 = 0;
+            var cont3 = 0;
 
 
-        var primero = parseInt(numerosarray[0]) + 3;
-        var segundo = parseInt(numerosarray[1]) + 2;
-        var tercero = parseInt(numerosarray[2]) + 1;
-        var cuarto = parseInt(numerosarray[3]);
-        if (primero == segundo && segundo == tercero && tercero == cuarto) {
-            document.write("<br><br><br><h1>Tienes escalera completa.</h1>");
-            completa = true;
+            for (var j = 0; j <= numerosarray.length; j++) {
+                if (numerosarray[0] == numerosarray[j]) {
+                    cont1++;
+                }
+                if (numerosarray[1] == numerosarray[j]) {
+                    cont2++;
+                }
+                if (numerosarray[2] == numerosarray[j]) {
+                    cont3++;
+                }
+            }
+            //trios
+            if (cont1 == 3 || cont2 == 3) {
+                document.write("<br><br><br><h1>Tienes trio.</h1>");
 
-        }
-        
+            }
+
+            //Parejas
+            if (cont1 == 2 && cont2 == 2 && cont3 == 2) {
+                document.write("<br><br><br><h1>Tienes doble pareja</h1>");
+
+
+            }
+
+            //Poker
+            if (numerosarray[0] == numerosarray[1] && numerosarray[0] == numerosarray[2] && numerosarray[0] == numerosarray[3]) {
+                document.write("<br><br><br><h1>Tienes poker.</h1>");
+
+            }
+            //Escaleras 
+            numerosarray.sort();//Ordenamos para hacerlo mas sencillo
+            //Escalera completa
+
+
+            var primero = parseInt(numerosarray[0]) + 3;
+            var segundo = parseInt(numerosarray[1]) + 2;
+            var tercero = parseInt(numerosarray[2]) + 1;
+            var cuarto = parseInt(numerosarray[3]);
+            if (primero == segundo && segundo == tercero && tercero == cuarto) {
+                document.write("<br><br><br><h1>Tienes escalera completa.</h1>");
+                completa = true;
+
+            }
+
             //Escaleras simples
 
             //Esto solo sirve teniendo en cuenta los 3 primeros valores
@@ -207,7 +213,7 @@
             var tercero = parseInt(numerosarray[2]) + 1;
             var cuarto = parseInt(numerosarray[3]);
             if (cuarto == segundo && segundo == tercero && primero != cuarto) {
-                
+
                 document.write("<br><br><br><h1>Tienes escalera simple.</h1>");
 
             }
@@ -216,11 +222,9 @@
             var segundo = parseInt(numerosarray[1]) + 2;
             var tercero = parseInt(numerosarray[2]) + 1;
             var cuarto = parseInt(numerosarray[3]);
-            
+
             if (primero == segundo && segundo == tercero && primero != cuarto) {
                 document.write("<br><br><br><h1>Tienes escalera simple.</h1>");
-               
-
             }
 
             //Ahora lo mismo pero teniendo en cuenta que puede haber dos valores iguales 
@@ -228,55 +232,91 @@
             var segundo = parseInt(numerosarray[1]) + 1;
             var tercero = parseInt(numerosarray[2]) + 1;
             var cuarto = parseInt(numerosarray[3]);
-            
+
             if (primero == segundo && segundo == tercero && primero == cuarto) {
                 document.write("<br><br><br><h1>Tienes escalera simple.</h1>");
-                
+
             }
-        
+            var parametros = "width=400, height=300, left=200, top=150 resizable=no, menubar=no, toolbar=no, directories=no, location=no, scrollbars=no, status=no";
+
+            function abrirVentana() {
+                ventanaHija = window.open("probabilkidades.html");
+            }
+            function cerrarVentana() {
+                ventanaHija.close();
+            }
+
+
+        </script>
+
+
+
+
+        <br><br>
+        <button onclick="abrirVentana();
+            setTimeout(cerrarVentana, 10000);"> Ver probabilidades</button>
+
+        <script type="text/javascript">
+            var contador = 1;
+            var letras = ["B", "C", "D", "F", "G", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+            var combinaciones = [];
+            for (let index = 0; index < letras.length; index++) {
+                for (let index2 = 0; index2 < letras.length; index2++) {
+                    for (let index3 = 0; index3 < letras.length; index3++) {
+                        var matricula = letras[index] + letras[index2] + letras[index3];
+                        combinaciones[contador] = matricula;
+                        contador++;
                     }
-                    </script>
-            </div>
-            <form action="" method="get">
-                <div class="col-6">
-                    <p>Dame los Numeros para hacer las comprobaciones</p>
-                    <input type="text" name="" id="numero">
-                </div>
-                <div class="col-6">
-                    <input type="button" value="Calcular" onclick="calcular()">
 
-                </div>
+                }
+            }
 
-            </form>
-        </div>
+        </script>
         <div class="row pt-5">
             <form action="" method="get">
-                <div class="col-10">
-                  
+                <div class="col-<div class=" form-group">
+                    <label>Letras de la matricula actual</label>
+                    <input type="text" class="form-control" id="matriculaActual">
                 </div>
-                <div class="col-6">
-                    <input type="button" value="Calcular Letras" onclick="calcularletras()">
-
+                <div class="col-<div class=" form-group">
+                    <label>Letras de la matricula a la que quiere llegar</label>
+                    <input type="text" class="form-control" id="matriculaLlegar">
                 </div>
-
-            </form>
         </div>
-        <div class="row" id="prueba"></div>
+        <div class="col-6">
+            <input type="button" value="Calcular Letras" onclick="calcularletras()">
+
+        </div>
+
+        </form>
+        <script>
+            var esperar=-5;
+            function calcularletras() {
+                var letras = ["B", "C", "D", "F", "G", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+                var letrasactuales = document.getElementById("matriculaActual").value.toString().toUpperCase();
+                var letrasqueridas = document.getElementById("matriculaLlegar").value.toString().toUpperCase();
+                var esperar1 = (combinaciones.indexOf(letrasqueridas) - combinaciones.indexOf(letrasactuales));
+                var esperar= esperar1 *10000;
+                // document.write((combinaciones.indexOf(letrasqueridas) * 10000) - combinaciones.indexOf(letrasactuales));
+                // return esperar;
+                document.write("Tienes que esperar : "+esperar+" matriculas");
+                setInterval("actualizar()",15000);
+            }
+            function actualizar(){location.reload(true);}
+        </script>
+        <div class="row">
+        <div class="col-12">
+            <script>
+                if (esperar!=-5) {
+                    document.write(esperar);
+                }
+                
+            </script>
+        </div>
     </div>
-
-
-    <!-- Optional JavaScript -->
-    <script src="./script.js"></script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    </div>
+    
+    </div>
 </body>
 
 </html>

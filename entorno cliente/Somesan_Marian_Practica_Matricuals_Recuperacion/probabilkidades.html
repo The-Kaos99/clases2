@@ -1,0 +1,100 @@
+<head>
+    <title>Practica Recuperacion </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body class="bg-secondary">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <script>
+                    var numeros = new Array();
+                    for (var n = 1000; n <= 9999; n++) {
+                        numeros.push(n);
+                    }
+                    var poker = new Array();
+                    var trios = new Array();
+                    var parejas = new Array();
+                    var escalerasimple = new Array();
+                    var escalera = new Array();
+                    for (var i = 0; i < numeros.length; i++) {
+                        var cadena = numeros[i].toString();
+                        var numerosarray = Array.from(cadena);
+                        var contador1 = 0;
+                        var contador2 = 0;
+                        var contador3 = 0;
+                        for (var j = 0; j <= numerosarray.length; j++) {
+                            if (numerosarray[0] == numerosarray[j]) {
+                                contador1++;
+                            }
+                            if (numerosarray[1] == numerosarray[j]) {
+                                contador2++;
+                            }
+                            if (numerosarray[2] == numerosarray[j]) {
+                                contador3++;
+                            }
+                        }
+                        //trios
+                        if (contador1 == 3 || contador2 == 3) {
+                            trios.push(numeros[i]);
+
+                        }
+                        //Doble Pareja
+                        if (contador1 == 2 && contador2 == 2 && contador3 == 2) {
+
+                            parejas.push(numeros[i]);
+                        }
+                        //Poker
+                        if (numerosarray[0] == numerosarray[1] && numerosarray[0] == numerosarray[2] && numerosarray[0] == numerosarray[3]) {
+                            poker.push(numeros[i]);
+                        }
+                        //Escaleras 
+                        numerosarray.sort();
+                        //Escalera completa
+                        var primero = parseInt(numerosarray[0]) + 3;
+                        var segundo = parseInt(numerosarray[1]) + 2;
+                        var tercero = parseInt(numerosarray[2]) + 1;
+                        var cuarto = parseInt(numerosarray[3]);
+                        if (primero == segundo && segundo == tercero && tercero == cuarto) {
+                            escalera.push(numeros[i]);
+
+                        }
+                        //Esto solo sirve teniendo en cuenta los 3 primeros valores
+                        var primero = parseInt(numerosarray[0]) + 2;
+                        var segundo = parseInt(numerosarray[1]) + 1;
+                        var tercero = parseInt(numerosarray[2]);
+                        if (primero == segundo && segundo == tercero) {
+                            escalerasimple.push(numeros[i]);
+
+                        }
+                        //Ahora lo mismo para los tres ultimos y asi tendremos en cuenta todas las posibles escaleras simples
+                        var primero = parseInt(numerosarray[1]) + 2;
+                        var segundo = parseInt(numerosarray[2]) + 1;
+                        var tercero = parseInt(numerosarray[3]);
+                        if (primero == segundo && segundo == tercero) {
+                            escalerasimple.push(numeros[i]);
+
+                        }
+
+
+
+                    }
+                    document.write("<br>Porcentaje de dobles parejas : " + parejas.length / numeros.length * 100 + "%");
+                    document.write("<br>Porcentaje de trios : " + trios.length / numeros.length * 100 + "%");                    
+                    document.write("<br>Porcentaje de escaleras simples : " + escalerasimple.length / numeros.length * 100 + "%");
+                    document.write("<br>Porcentaje de escaleras completas : " + escalera.length / numeros.length * 100 + "%");
+                    document.write("<br>Porcentaje de poker : " + poker.length / numeros.length * 100 + "%");
+
+                </script>
+            </div>
+        </div>
+</body>
+
+</html>
