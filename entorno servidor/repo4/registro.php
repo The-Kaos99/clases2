@@ -30,6 +30,11 @@ if (isset($_SESSION["user"])) {
                         $contra = mysqli_real_escape_string($enlace,$_REQUEST["Password"]);
                         $contra= md5($contra);
                         $username = mysqli_real_escape_string($enlace, $_REQUEST["nombreusuario"]);
+                        /*if(!preg_match('/[^a-zA-Z\d]/', $string)){//enviar}  
+                        
+                        Mirar un patron que no tenga signos y cosas raras y utilizarlo 
+                        
+                        */
                         if (mysqli_query($enlace, "INSERT into usuarios (username,nombre,password ) VALUES ('$username','','$contra')")) {
                             $estructura = './'.$_REQUEST["nombreusuario"];
                             if (!mkdir($estructura, 0777, true)) {
