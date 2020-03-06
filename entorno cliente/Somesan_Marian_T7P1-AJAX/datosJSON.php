@@ -2,7 +2,7 @@
 // Cabecera para indicar que vamos a enviar datos JSON y que no haga caché de los datos.
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate');
-header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+//header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 /*
 Utilizar el fichero dbcreacion.sql incluído en la carpeta para crear la base de datos,
 usuario y tabla en tu servidor MySQL.
@@ -15,14 +15,14 @@ $basedatos = "ajax";
 $usuario = "ajax";
 $password = "dwec";
 // Creamos la conexión al servidor.
-$conexion=mysql_connect($servidor, $usuario, $password) or die(mysql_error());
-mysql_query("SET NAMES 'utf8'",$conexion);
+$conexion=mysqli_connect($servidor, $usuario, $password,$basedatos);
+mysqli_query($conexion,"SET NAMES 'utf8'");
 // Seleccionar la base de datos en esa conexion.
-mysql_select_db($basedatos,$conexion) or die(mysql_error());
+//mysql_select_db($basedatos,$conexion) or die(mysql_error());
 // Consulta SQL para obtener los datos de los centros.
 $sql="select * from centros order by nombrecentro";
-$resultados=mysql_query($sql,$conexion) or die(mysql_error());
-while ( $fila = mysql_fetch_array($resultados, MYSQL_ASSOC))
+$resultados=mysqli_query($conexion,$sql);
+while ( $fila = mysqli_fetch_array($resultados))
 {
 // Almacenamos en un array cada una de las filas que vamos leyendo del recordset.
 $datos[]=$fila;
@@ -50,18 +50,6 @@ y así ya tenemos disponible en JavaScript una variable resultados que es un arr
 que contendrá los objetos literales.
 */
 echo json_encode($datos); // función de PHP que convierte a formato JSON el array.
-mysql_close($conexion);
-?>
-
-// Consulta SQL para obtener los datos de los centros.
-$sql="select * from centros order by nombrecentro";
-$resultados=mysql_query($sql,$conexion) or die(mysql_error());
-
-while ( $fila = mysql_fetch_array($resultados, MYSQL_ASSOC)){
-// Almacenamos en un array cada una de las filas que vamos leyendo del recordset.
-$datos[]=$fila;
-}
-echo JSON_encode($datos); // función de PHP que convierte a formato JSON el array.
-
+mysqli_close($conexion);
 
 ?>
