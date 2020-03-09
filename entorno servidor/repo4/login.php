@@ -29,7 +29,7 @@
                     <!-- Sign in button -->
                     <button class="btn btn-info btn-block my-4" type="submit" name="enviar">Iniciar Sesion</button>
                     <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                        Para acceder como administrdor utilia admin:admin
+                        Para acceder como administrdor utiliza admin:admin
                     </small>
 
                 </form>
