@@ -26,7 +26,11 @@ if (isset($_SESSION["user"])) {
             if (isset($_REQUEST["nombreusuario"])) {
                 //printf("Fallo de conexion : ");
                 if (isset($_REQUEST["Password"])) {
-                    if ($_REQUEST["Password"] != "" && $_REQUEST["nombreusuario"] != "") {
+                    $cadena="'";
+                    $cadena2="\"";
+                    $pos = strpos($_REQUEST["nombreusuario"], $cadena);
+                    $pos2 = strpos($_REQUEST["nombreusuario"], $cadena2);
+                    if ($_REQUEST["Password"] != "" && $_REQUEST["nombreusuario"] != "" && $pos===false && $pos2===false ) {
                         $contra = mysqli_real_escape_string($enlace,$_REQUEST["Password"]);
                         $contra= md5($contra);
                         $username = mysqli_real_escape_string($enlace, $_REQUEST["nombreusuario"]);
@@ -40,11 +44,13 @@ if (isset($_SESSION["user"])) {
                             if (!mkdir($estructura, 0777, true)) {
                                 die('Fallo al crear las carpetas...');
                             }
-                            /* printf("%d fila insertada.\n", mysqli_affected_rows($enlace));
-                            printf("Usuario creado corectament");*/
+                            /* printf("%d fila insertada.\n", mysqli_affected_rows($enlace));*/
+                            printf("<h2 class=\" pb-3 text-success\">Usuario creado corectament</h2>");
                             $archivoActual = $_SERVER['PHP_SELF'];
                             header("refresh:0;url=" . $archivoActual);
                         }
+                    }else{
+                        print("<h2 class=\" pb-3 text-danger\">Hubo un error con los datos proporcionados , asegurate de no tener caracteres especiales en el nombre de usuario</h2>");
                     }
                 }
             }
