@@ -1,4 +1,44 @@
 .minh-100 {
   height: 100vh;
 }
+
+body {
+  background-image: url(../imagenes/fondo.jpg);
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.opacidad-0 {
+  opacity: 1000;
+}
+
+.opacidad-10 {
+  opacity: 0.90;
+}
+
+.opacidad-20 {
+  opacity: 0.80;
+}
+
+.opacidad-30 {
+  opacity: 0.70;
+}
+
+.opacidad-40 {
+  opacity: 0.60;
+}
+
+.opacidad-50 {
+  opacity: 0.5;
+}
 /*# sourceMappingURL=main.css.map */

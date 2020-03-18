@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Login</title>
@@ -9,17 +9,18 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="estilos.css">
+
 </head>
 
-<body class="">
-    <div class="container">
-        <div class="row justify-content-center align-items-center  minh-100 shadow-lg">
+<body class="minh-100">
 
-            <div class="col-md-4 bg-gradient-success border border-primary ">
-                <picture>
-                    <source sizes="100vw" type="image/webp"
-                  srcset=" imagenes/usuario-lg_1x.webp 1440w, 
+    <?php require_once "cabecera.php";?>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center shadow-lg pt-3">
+            <div class="col-md-4 bg-gradient-success border border-primary shadow-lg ">
+                <picture class="hoverable">
+                    <source sizes="100vw" type="image/webp" srcset=" imagenes/usuario-lg_1x.webp 1440w, 
                         imagenes/usuario-md_1x.webp 900w,
                         imagenes/usuario-sm_1x.webp 600w">
                     <img class="d-block w-100 p-1" src="imagenes/usuario.png" alt="Cuarto elemento">
