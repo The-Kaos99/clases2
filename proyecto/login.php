@@ -4,6 +4,8 @@
 <head>
     <title>Login</title>
     <!-- Required meta tags -->
+    <meta name="description" content="Esta es la descripcion para el buscador , listado de busqueda">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -27,8 +29,8 @@
                 </picture>
                 <form  action="" method="POST">
                     <div class="form-group text-center">
-                        <label for="email">Usuario:</label>
-                        <input type="text" class="form-control text-center" placeholder="Introduce Usuario"
+                        <label for="user">Usuario o Email:</label>                        
+                        <input type="text" class="form-control text-center" placeholder="Introduce Usuario o Email"
                             id="user" name="user">
                     </div>
                     <div class="form-group text-center ">
@@ -53,6 +55,9 @@
 
 require_once("bd.php");
 session_start();
+$admin=false;
+$profe=false;
+$padre=false;
 if (isset($_REQUEST["entrar"])) {
     if (isset($_REQUEST["user"])) {
         if (isset($_REQUEST["pwd"])) {
@@ -60,14 +65,48 @@ if (isset($_REQUEST["entrar"])) {
             $password=mysqli_real_escape_string($enlace, $_REQUEST["pwd"]);
             $password=md5($password);
             $sql = "SELECT  count(username) FROM admins where username='$username' AND password='$password'";
-
             $result = mysqli_query($enlace, $sql);
             while ($row = mysqli_fetch_array($result)) {
                 /*Imprimir campo por indice*/
                 printf("Conexion : $row[0]");
+              if ($row[0]==1) {
+                 $admin=true;
+                 //  header("Location: administracion/index.php");
+              }              
+           }
+            $sql2 = "SELECT  count(nombre) FROM profesores where nombre='$username' OR email='$username' AND pass='$password'";
+            $result = mysqli_query($enlace, $sql2);
+          //  printf($result);
+            while ($row = mysqli_fetch_array($result)) {
+                /*Imprimir campo por indice*/
                 
-                header("Location: administracion/index.php");
-            }          
+                if ($row[0]==1) {
+                    printf("Conexion : $row[0]");
+                   $profe=true;
+                  //  header("Location: administracion/index.php");
+                }
+               
+            }
+            $sql3 = "SELECT  count(username) FROM padres where username='$username' OR email='$username' AND pass='$password'";
+            $result = mysqli_query($enlace, $sql3);
+            while ($row = $result) {
+                /*Imprimir campo por indice*/
+                printf("Conexion : $row[0]");
+                if ($row[0]==1) {
+                   $padre=true;
+                  //  header("Location: administracion/index.php");
+                }
+               
+            }   
+            if ($admin) {
+                header("Location: administracion/");
+            }
+            if ($profe) {
+                header("Location: profesores/index.php");
+            }
+            if ($padre) {
+                header("Location: padres/index.php");
+            }
         }
 
     }

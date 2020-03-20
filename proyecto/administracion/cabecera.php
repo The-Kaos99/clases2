@@ -14,13 +14,13 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavId">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li class="nav-item ">
-                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="./">Inicio </a>
+                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="../">Inicio </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="explicacion.php">Primeros pasos</a>
+                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="">Primeros pasos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="./login.php">Iniciar Sesion</a>
+                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="">Iniciar Sesion</a>
                             </li>
                         </ul>
                     </div>

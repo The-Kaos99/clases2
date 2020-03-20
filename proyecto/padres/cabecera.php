@@ -2,7 +2,7 @@
     <div>
         <div class="row  bg-gradient-light opacidad-20   shadow-lg">
             <div class="col-8">
-                <h1>Bienvenidos</h1>
+                <h1>Bienvenido Padres</h1>
             </div>
             <div class="col-4 ">
                 <nav class="navbar navbar-expand-sm navbar-light ">
@@ -14,13 +14,13 @@
                     <div class="collapse navbar-collapse" id="collapsibleNavId">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li class="nav-item ">
-                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="./" alt="Hola">Pagina Principal</a>
+                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="../">Inicio </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="explicacion.php">Primeros pasos</a>
+                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="">Primeros pasos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="./login.php">Iniciar Sesion</a>
+                                <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center" href="">Iniciar Sesion</a>
                             </li>
                         </ul>
                     </div>

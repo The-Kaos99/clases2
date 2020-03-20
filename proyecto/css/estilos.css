@@ -10754,7 +10754,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 body {
-  background-image: url(../imagenes/fondo.jpg);
+  background-image: url(../imagenes/fondo.webp);
   /* Full height */
   height: 100%;
   /* Center and scale the image nicely */
@@ -10770,7 +10770,7 @@ footer {
 }
 
 .opacidad-0 {
-  opacity: 1000;
+  opacity: 1.0;
 }
 
 .opacidad-10 {

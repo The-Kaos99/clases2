@@ -3,7 +3,7 @@
 
 <head>
     <title>Bienvenidos</title>
-    <meta name="description" content="This is an example of a meta description. This will often show up in search results.">
+    <meta name="description" content="Esta es la descripcion para el buscador , listado de busqueda">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
