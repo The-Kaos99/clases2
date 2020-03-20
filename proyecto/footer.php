@@ -16,3 +16,8 @@
           </div>
       </div>
       </footer>
+      <?php 
+      if (isset($enlace)) {
+          mysqli_close($enlace);
+      }      
+      ?>

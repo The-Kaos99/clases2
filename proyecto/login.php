@@ -25,20 +25,20 @@
                         imagenes/usuario-sm_1x.webp 600w">
                     <img class="d-block w-100 p-1" src="imagenes/usuario.png" alt="Cuarto elemento">
                 </picture>
-                <form action="/action_page.php">
+                <form  action="" method="POST">
                     <div class="form-group text-center">
                         <label for="email">Usuario:</label>
                         <input type="text" class="form-control text-center" placeholder="Introduce Usuario"
-                            id="usuario">
+                            id="user" name="user">
                     </div>
                     <div class="form-group text-center ">
                         <label for="pwd">Contraseña:</label>
                         <input type="password" class="form-control text-center" placeholder="Introduce Contraseña"
-                            id="pwd">
+                            id="pwd" name="pwd">
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-outline-dark">Entrar</button>
+                        <button type="btn" class="btn btn-primary btn-outline-dark" name="entrar">Entrar</button>
                     </div>
                     <div class="form-group form-check">
                         <label class="form-check-label">
@@ -49,7 +49,33 @@
             </div>
         </div>
     </div>
+<?php 
 
+require_once("bd.php");
+session_start();
+if (isset($_REQUEST["entrar"])) {
+    if (isset($_REQUEST["user"])) {
+        if (isset($_REQUEST["pwd"])) {
+            $username=mysqli_real_escape_string($enlace, $_REQUEST["user"]);
+            $password=mysqli_real_escape_string($enlace, $_REQUEST["pwd"]);
+            $password=md5($password);
+            $sql = "SELECT  count(username) FROM admins where username='$username' AND password='$password'";
+
+            $result = mysqli_query($enlace, $sql);
+            while ($row = mysqli_fetch_array($result)) {
+                /*Imprimir campo por indice*/
+                printf("Conexion : $row[0]");
+                
+                header("Location: administracion/index.php");
+            }          
+        }
+
+    }
+}
+if (isset($enlace)) {
+    mysqli_close($enlace);
+} 
+?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

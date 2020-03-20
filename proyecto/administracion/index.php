@@ -3,18 +3,19 @@
 
 <head>
     <title>Bienvenidos</title>
+    <meta name="description" content="This is an example of a meta description. This will often show up in search results.">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 
 <body class="minh-100">
             <?php require_once "cabecera.php";?>
       
-    <?php require_once "footer.php";?>
+    <?php require_once "../footer.php";?>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
