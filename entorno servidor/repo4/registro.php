@@ -54,6 +54,8 @@ if (isset($_SESSION["user"])) {
                     }
                 }
             }
-        }}}
+        }
+    }
+}
 mysqli_close($enlace);
 ?>

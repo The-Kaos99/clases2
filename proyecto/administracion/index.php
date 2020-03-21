@@ -19,26 +19,11 @@
             <div class="col-md-4">
             <?php require_once "crear_profes.php";?>
             </div>
-            <div class="col-md-4">
-                <script type="text/javascript">
-                    function generar(longitud)
-                    {
-                      long =8;
-                      var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
-                      var contraseña = "";
-                      for (i=0; i<long; i++) contraseña += caracteres.charAt(Math.floor(Math.random()*caracteres.length));
-                      document.getElementById("pass").innerHTML=contraseña;
-                    }
-                </script>
+            <div class="col-md-4">              
                     
-                    <form id="Form" name="aleatorio" method="post" action="JavaScript:generar(document.aleatorio.long.value)" >
-                    <input name="long" type="hidden" id="texto" autocomplete="off" placeholder="Longitud de la contraseña" >
-                    <button type="submit" >Generar</button>
-                    </form>
-                    <p id="pass"></p>
+                    
             </div>
             <div class="col-md-4">
-            <?php require"crear_profes.php";?>
             </div>
         </div>
         
