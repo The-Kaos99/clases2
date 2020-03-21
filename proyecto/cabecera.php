@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div>
-        <div class="row  bg-gradient-light opacidad-20   shadow-lg">
+        <div class="row  bg-gradient-success opacidad-10 shadow-lg">
             <div class="col-8">
                 <h1>Bienvenidos</h1>
             </div>
             <div class="col-4 ">
-                <nav class="navbar navbar-expand-sm navbar-light ">
+                <nav class="navbar navbar-expand-md navbar-light ">
                     <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                         data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                         aria-label="Toggle navigation">
