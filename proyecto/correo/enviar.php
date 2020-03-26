@@ -7,7 +7,7 @@ require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
 
-function enviar_correo( $correo , $pass)
+function enviar_correo($correo, $pass, $nombre_completo)
 {
     $mail = new PHPMailer(true);
 
@@ -24,7 +24,7 @@ function enviar_correo( $correo , $pass)
 
         //Recipients
         $mail->setFrom('contmarian99@gmail.com', 'Proyecto integrado 2020');
-        $mail->addAddress(/*'mariansomesa@gmail.com'*/$correo, 'Joe User'); // Add a recipient
+        $mail->addAddress( /*'mariansomesa@gmail.com'*/$correo, 'Joe User'); // Add a recipient
 
         /* Attachments
         $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
@@ -32,16 +32,24 @@ function enviar_correo( $correo , $pass)
 
         // Content
         $mail->isHTML(true); // Set email format to HTML
-        $mail->Subject = 'Prueba de correo';
-        $mail->Body = '<html>
-    <body>
-    <h1>Este mensaje contiene su contraseña de acceso a la plataforma</h1>
-    <h2>No olviden sus credenciales </h2>
-    <p>Usuario :'.$correo.' </p>
-    <p>Contraseña : '.$pass.'</p>
-        <br/>
-    </body>
-    </html>';
+        $mail->Subject = 'Le damos la bienvenida';
+        $mail->Body = '<!doctype html>
+        <html lang="es">
+        <body>
+            <h1 >Le damos la bienvenida a nuestra plataforma </h1>
+
+            <h2 >Querido ' . $nombre_completo . ' , le damos la bienvenida a nuestra plataforma de
+               gestion de entrada y salidas del alumnado del centro </h2>
+            <p><strong>A continucion tendra su usuario y clave de acceso:</strong></p>
+            <ul>
+                 <li>Usuario : ' . $correo . ' </li>
+                <li>Contraseña : ' . $pass . '</li>
+            </ul>
+            <small>Este correo electronico ha sido generado automaticamente no se acceptan
+                            respuestas </small></div>
+        </body>
+
+        </html>';
         //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         $mail->send();

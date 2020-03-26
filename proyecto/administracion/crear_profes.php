@@ -66,8 +66,9 @@ if (isset($_REQUEST["enviar"]) && isset($_REQUEST["nombre"]) && isset($_REQUEST[
             printf("<h2 class=\" pb-3 text-success\">Usuario creado corectament</h2>");
             /*  $archivoActual = $_SERVER['PHP_SELF'];
             header("refresh:0;url=" . $archivoActual);*/
+            $nombre_completo=$username.' '.$apellidos;
             require "../correo/enviar.php";
-            enviar_correo($email, $contra2);
+            enviar_correo($email, $contra2 , $nombre_completo);
         } else {
             print("<h2 class=\" pb-3 text-danger\">Hubo un error con los datos proporcionados </h2>");
         }
