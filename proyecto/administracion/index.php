@@ -17,17 +17,17 @@
     <div class="container bg-gradient-light opacidad-10">
         <div class="row">
             <div class="col-md-4">
-            <?php require_once "crear_profes.php";?>
+                <?php require_once "crear_profes.php";?>
             </div>
-            <div class="col-md-4">
-            <button class="btn btn-primary" onclick="mostrarProfes()">Mostrar Profesores</button>
-            <table class="table mt-5" id="listaProfesores">
+            <div class="col-md-8">
+                <button class="btn btn-primary" onclick="mostrarProfes()">Mostrar Profesores</button>
+                <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-condensed mt-4" id="listaProfesores"> </table>
+                </div>
+                <h1 class="danger">Mirar aqui para la tabla y probar mas <a href="https://mdbootstrap.com/docs/jquery/tables/scroll/">Tablas</a></h1>
 
-            </table>
+            </div>
 
-            </div>
-            <div class="col-md-4">
-            </div>
         </div>
 
     </div>

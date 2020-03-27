@@ -1,7 +1,7 @@
 
 function mostrarProfes() {
     var xhr= new XMLHttpRequest();
-    xhr.open('GET','prueba.php',true);
+    xhr.open('GET','../administracion/listaProfesores.php',true);
     xhr.onload=function(){
         if (xhr.status===200) {
             var json= JSON.parse(xhr.responseText);

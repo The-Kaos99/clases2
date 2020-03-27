@@ -9,26 +9,24 @@ function mostrarProfes() {
             var template = ``;
             json.map(function (data) {
                 template += `
-                <div class="row">
-                    <tr>
-                        <th scope="row" class="col-md-3">${data.nombre}</th>
+                    <tr >                    
+                        <th scope="row">${data.nombre}</th>
                         <td>${data.apellidos}</td>
-                        <td class="col-md-3"><a href="mailto:${data.email}">${data.email}</a></td>
-                        <td class="col-md-3">
-                        <button class="btn btn-danger task-delete" \onclick=\"borrrarProfesor()\">Eliminar</button>
-                      </td>                    
+                        <td ><a href="mailto:${data.email}">${data.email}</a></td>
+                        <td ">
+                        <button class="btn btn-danger task-delete" onclick="borrrarProfesor()">Eliminar</button>
+                      </td>                                         
                     </tr>
-                </div>
                 `;
                 return template;
             });
             var cabeceraTabla = `
-                <thead>
+                <thead class="thead-dark">
                     <tr>
-                        <th scope="col-3">Nombre</th>
-                        <th scope="col-3">Apellidos</th>
-                        <th scope="col-3">Email</th>
-                        <th scope="col-3"></th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
             `;
