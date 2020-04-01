@@ -41,7 +41,7 @@
     }
 </script>
 <?php
-require "../bd.php";
+require_once "../bd.php";
 
 if (isset($_REQUEST["enviar"]) && isset($_REQUEST["nombre"]) && isset($_REQUEST["apellidos"]) && isset($_REQUEST["email"])) {
     

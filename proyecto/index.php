@@ -14,7 +14,8 @@
 
 <body class="minh-100">
             <?php require_once "cabecera.php";?>
-            <div class="container bg-gradient-light opacidad-20">
+            <div class="container bg-gradient-light opacidad-10">
+            <hr>
         <div class="row ">
             <div class="col-12 opacidad-0">
                 <h2>Bienvenidos aquí les dare las credenciales de prueba</h2>
@@ -25,6 +26,7 @@
                 </ul>
             </div>
         </div>
+        <hr>
     </div>
     <?php require_once "footer.php";?>
     <!-- Optional JavaScript -->

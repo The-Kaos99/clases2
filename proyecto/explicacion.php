@@ -14,7 +14,8 @@
 <body class="minh-100">
 
     <?php require_once "cabecera.php";?>
-    <div class="container bg-gradient-light opacidad-20">
+    <div class="container bg-gradient-light opacidad-10">
+    <hr>
         <div class="row ">
             <div class="col-12 opacidad-0">
                 <h2>Bienvenidos aquí les explicare como funciona esta web y como tendrán que solicitar el acceso a ella
@@ -28,6 +29,7 @@
                 </ul>
             </div>
         </div>
+        <hr>
     </div>
 
     <?php require_once "footer.php";?>

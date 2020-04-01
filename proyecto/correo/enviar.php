@@ -38,7 +38,7 @@ function enviar_correo($correo, $pass, $nombre_completo)
         <body>
             <h1 >Le damos la bienvenida a nuestra plataforma </h1>
 
-            <h2 >Querido ' . $nombre_completo . ' , le damos la bienvenida a nuestra plataforma de
+            <h2 >Querid@ ' . $nombre_completo . ' , le damos la bienvenida a nuestra plataforma de
                gestion de entrada y salidas del alumnado del centro </h2>
             <p><strong>A continucion tendra su usuario y clave de acceso:</strong></p>
             <ul>

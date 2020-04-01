@@ -2,7 +2,7 @@
 
 // aqui se modifica la conexion  a la base de datos 
 $host = 'localhost';
-$db = 'proyecto';
+$db = 'mariano';
 $user = 'root';
 $password = "";
 $enlace = mysqli_connect("$host", "$user", "$password", "$db");

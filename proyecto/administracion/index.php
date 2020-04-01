@@ -8,28 +8,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 
 <body class="minh-100">
     <?php require_once "cabecera.php";?>
     <div class="container bg-gradient-light opacidad-10">
+        <hr>
         <div class="row">
             <div class="col-md-4">
                 <?php require_once "crear_profes.php";?>
             </div>
             <div class="col-md-8">
-                <button class="btn btn-primary" onclick="mostrarProfes()">Mostrar Profesores</button>
-                <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-                    <table class="table table-condensed mt-4" id="listaProfesores"> </table>
-                </div>
-                <h1 class="danger">Mirar aqui para la tabla y probar mas <a href="https://mdbootstrap.com/docs/jquery/tables/scroll/">Tablas</a></h1>
+                <button class="btn btn-primary mt-2" onclick="mostrarProfes()">Mostrar Profesores</button>
 
+                <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-condensed mt-4 text-center" id="listaProfesores"> </table>
+
+                </div>
             </div>
 
         </div>
-
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <?php require_once "crear_alumnos.php";?>
+            </div>
+            <div class="col-md-8">
+                <button class="btn btn-primary mt-2" onclick="mostrarProfes()">Mostrar Alumnos</button>
+                <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+                    <table class="table table-condensed mt-4 text-center" id="listaProfesores"> </table>
+                </div>
+            </div>
+        </div>
+        <hr>
     </div>
 
     <?php require_once "../footer.php";?>

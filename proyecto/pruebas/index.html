@@ -7,37 +7,99 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/estilos.css">
+    <!-- Bootstrap CSS 
+    <link rel="stylesheet" href="../css/estilos.css">-->
 </head>
 
 <body>
 
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Lista Profesores</h1>
-            </div>
+    <h1>Buscar en el contenido de una tabla</h1>
+    <p>Search icon: <span class="glyphicon glyphicon-search"></span></p>
+    <form>
+        <div class="form-group">
+            <label for="searchTerm">Busqueda</label>
+            <input type="text" class="form-control" name="searchTerm" id="searchTerm"
+                aria-describedby="searchTerm" placeholder="Buscar Profesor" onkeyup="doSearch('datos','searchTerm')">
         </div>
-        <div class="row">
-            <div class="col-12">
-                <button class="btn btn-primary" onclick="mostrarProfes()">Mostrar Profesores</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-4">
-                <table class="table" id="listaProfesores">            
+    </form>
+    <p>
+        <table id="datos">
+            <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Género</th>
+                <th>Edad</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Juan</td>
+                <td>Perez</td>
+                <td>M</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jose</td>
+                <td>Vazquez</td>
+                <td>M</td>
+                <td>31</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>MARIAN</td>
+                <td>Somesan</td>
+                <td>2º</td>
+                <td>DAW</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Luisa</td>
+                <td>Valdes</td>
+                <td>F</td>
+                <td>56</td>
+            </tr>
+            
+        </table>
+    </p>
 
-                </table>
-            </div>
-        </div>
-        
-    </div>
-    
-    
+
     <!-- Optional JavaScript -->
-    <script src="../js/app.js"></script>
+    <script>
+        function doSearch(idTabla,idBuscador) {
+            const tableReg = document.getElementById(idTabla);
+            const searchText = document.getElementById(idBuscador).value.toLowerCase();
+            let total = 0;
+
+            // Recorremos todas las filas con contenido de la tabla
+            for (let i = 1; i < tableReg.rows.length; i++) {
+                // Si el td tiene la clase "noSearch" no se busca en su cntenido
+                if (tableReg.rows[i].classList.contains("noSearch")) {
+                    continue;
+                }
+
+                let found = false;
+                const cellsOfRow = tableReg.rows[i].getElementsByTagName('td');
+                // Recorremos todas las celdas
+                for (let j = 0; j < cellsOfRow.length && !found; j++) {
+                    const compareWith = cellsOfRow[j].innerHTML.toLowerCase();
+                    // Buscamos el texto en el contenido de la celda
+                    if (searchText.length == 0 || compareWith.indexOf(searchText) > -1) {
+                        found = true;
+                        total++;
+                    }
+                }
+                if (found) {
+                    tableReg.rows[i].style.display = '';
+                } else {
+                    // si no ha encontrado ninguna coincidencia, esconde la
+                    // fila de la tabla
+                    tableReg.rows[i].style.display = 'none';
+                }
+            }
+        }
+       
+    </script>
     <!-- jQuery first, 
         then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -51,4 +113,5 @@
         crossorigin="anonymous"></script>
 </body>
 <script src="app.js"></script>
+
 </html>
