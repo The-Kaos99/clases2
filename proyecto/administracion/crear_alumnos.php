@@ -42,7 +42,7 @@
 </div>
 <?php
 require_once "../bd.php";
-
+/* Hago una modificacion ... La guardo */
 if (isset($_REQUEST["enviar_alumno"]) && isset($_REQUEST["nombre_alumno"]) && isset($_REQUEST["apellidos_alumno"])
     && isset($_REQUEST["fech_nac"]) && isset($_REQUEST["curso"]) && isset($_REQUEST["grupo"]) /*&& isset($_REQUEST["img_alumno"])*/) {
 
