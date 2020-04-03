@@ -36,13 +36,12 @@
                 <input type="file" class="form-control pb-5 pt-3" name="img_alumno" id="img_alumno"
                     aria-describedby="img_alumno" required>
             </div>
-            <button type="submit" class="btn btn-success " name="enviar_alumno"   >Crear Alumno</button>
+            <button type="submit" class="btn btn-success " name="enviar_alumno">Crear Alumno</button>
         </form>
     </div>
 </div>
 <?php
 require_once "../bd.php";
-/* Hago una modificacion ...... La guardo */
 if (isset($_REQUEST["enviar_alumno"]) && isset($_REQUEST["nombre_alumno"]) && isset($_REQUEST["apellidos_alumno"])
     && isset($_REQUEST["fech_nac"]) && isset($_REQUEST["curso"]) && isset($_REQUEST["grupo"]) /*&& isset($_REQUEST["img_alumno"])*/) {
 
@@ -52,13 +51,13 @@ if (isset($_REQUEST["enviar_alumno"]) && isset($_REQUEST["nombre_alumno"]) && is
         $fech_nac = mysqli_real_escape_string($enlace, $_REQUEST["fech_nac"]);
         $curso = mysqli_real_escape_string($enlace, $_REQUEST["curso"]);
         $grupo = mysqli_real_escape_string($enlace, $_REQUEST["grupo"]);
-        
-        if (mysqli_query($enlace, "INSERT INTO `alumnos`(`nombre`, `apellidos`, `fech_nac`, `curso` , `grupo`) 
+
+        if (mysqli_query($enlace, "INSERT INTO `alumnos`(`nombre`, `apellidos`, `fech_nac`, `curso` , `grupo`)
         VALUES ('$nombre_alumno','$apellidos_alumno','$fech_nac','$curso' ,'$grupo')")) {
             printf("<h2 class=\" pb-3 text-success\">Usuario creado corectament</h2>");
         } else {
             print("<h2 class=\" pb-3 text-danger\">Hubo un error con los datos proporcionados </h2>");
-            echo mysql_error($enlace) . ": " . mysql_error($enlace). "\n";
+            echo mysql_error($enlace) . ": " . mysql_error($enlace) . "\n";
         }
     } else {
         print("<h2 class=\" pb-3 text-danger\">Hubo un error con los datos proporcionados </h2>");
