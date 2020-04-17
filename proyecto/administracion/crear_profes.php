@@ -45,8 +45,6 @@ require_once "../bd.php";
 
 if (isset($_REQUEST["enviar"]) && isset($_REQUEST["nombre"]) && isset($_REQUEST["apellidos"]) && isset($_REQUEST["email"])) {
     
-    $hoy = 5;
-    mysqli_query($enlace, "INSERT into prueba (hola) VALUES ('$hoy')");
     if ($_REQUEST["nombre"] != "") {
        // $contra //= mysqli_real_escape_string($enlace, 'hola');
         $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
