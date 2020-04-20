@@ -12,10 +12,9 @@
 */
 
 Route::get('/', 'InicioController@index');
-Route::get('/contacto', 'InicioController@contactar');
 Route::get('/primeros_pasos', 'InicioController@primeros_pasos');
 Route::get('admin', 'AdministracionController@index');
-Route::get('admin/profesores', 'AdministracionController@Profesores');
+//Route::get('admin/profesores', 'AdministracionController@Profesores');
 Route::get('admin/alumnos', 'AdministracionController@Alumnos');
 Route::get('admin/padres', 'AdministracionController@Padres');
- 
+Route::Resource("admin/profesores","ProfesoresController");

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Profesor;
 use Illuminate\Http\Request;
 
 class ProfesoresController extends Controller
@@ -13,7 +14,8 @@ class ProfesoresController extends Controller
      */
     public function index()
     {
-        return "Estoy en este video exxxxn ";
+        $profesors=  Profesor::all();
+        return view('administracion.profesores.index', compact('profesors'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ProfesoresController extends Controller
      */
     public function create()
     {
-        return view('administracion.layaouts.create_profe');
+        return view('administracion.profesores.index');
     }
 
     /**
@@ -34,7 +36,21 @@ class ProfesoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $profesor = new Profesor();
+        $profesor->nombre = $request->input('nombre');
+        $profesor->apellidos = $request->input('apellidos');
+        $profesor->email = $request->input('email');
+        $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        $password = "";
+        //Reconstruimos la contraseña segun la longitud que se quiera
+        for ($i = 0; $i < 10; $i++) {
+            //obtenemos un caracter aleatorio escogido de la cadena de caracteres
+            $password .= substr($str, rand(0, 62), 1);
+        }
+        $profesor->pass = $password;
+        $profesor->save();
+        $profesors=  Profesor::all();
+        return view('administracion.profesores.index', compact('profesors'));
     }
 
     /**

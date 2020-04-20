@@ -12,14 +12,14 @@ class AdministracionController extends Controller
     }
     public function Profesores()
     {
-        return view('administracion.profesores');
+        return view('administracion.profesores.index');
     }
     public function Alumnos()
     {
-        return view('administracion.alumnos');
+        return view('administracion.alumnos.index');
     }
     public function Padres()
     {
-        return view('administracion.padres');
+        return view('administracion.padres.index');
     }
 }

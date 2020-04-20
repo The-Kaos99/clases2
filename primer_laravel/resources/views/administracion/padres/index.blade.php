@@ -5,8 +5,8 @@
 ?>
 @endsection
 @section('contenido')
-@include("administracion.create_padres")
-@include("administracion.list_padres")
+@include("administracion.padres.create_padres")
+@include("administracion.padres.list_padres")
 @endsection
 @section('footer')
 @endsection

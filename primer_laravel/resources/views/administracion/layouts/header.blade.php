@@ -4,7 +4,7 @@
             <h1>{{ $titulo }}</h1>
         </div>
         <div class="col-4 ">
-            <nav class="navbar navbar-expand-md navbar-light ">
+            <nav class="navbar navbar-expand-xl navbar-light ">
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                     data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -23,6 +23,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="{{asset("admin/padres")}}">Tutores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bg-danger m-2 opacidad-0 text-light text-center border border-primary" href="{{asset("/")}}">Salir</a>
                         </li>
                     </ul>
                 </div>

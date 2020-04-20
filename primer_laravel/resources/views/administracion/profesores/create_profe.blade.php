@@ -4,8 +4,10 @@
         <div class="row pb-5">
             <div class="col-1"></div>
             <div class="col-10 opacidad-0">
-                <form action="" method="post">
+                <form action="/admin/profesores" method="post" >
+                    {{ csrf_field() }}
                     <div class="form-group">
+                       
                         <label for="nombre">Nombre del Profesor</label>
                         <input type="text" class="form-control" name="nombre" id="nombre"
                             aria-describedby="nombre" placeholder="Nombre del Profesor">
@@ -22,10 +24,10 @@
                     </div>
                     <div class="form-group">
                         <label for="contra">Contraseña :<br> Sera enviada por correo </label>
-                        <input type="hidden" class="form-control" name="Password" id="Password">
+                        <input type="hidden" class="form-control" name="Password" id="Password" value="HHddjsadñja">
                     </div>
                     <!--<button class="btn btn-success" type="submit" name="borrar" onclick="generar(8)" name="enviar">Crear Profesor</button>-->
-                    <button type="submit" class="btn btn-success" name="enviar"  onclick="generar(8)" >Crear Profesor</button>
+                    <button type="submit" class="btn btn-success" name="enviar"  >Crear Profesor</button>
                 </form>
             </div>
             <div class="col-1"></div>

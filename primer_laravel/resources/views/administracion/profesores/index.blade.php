@@ -5,8 +5,8 @@
 ?>
 @endsection
 @section('contenido')
-@include("administracion.create_profe")
-@include("administracion.list_profe")
+@include("administracion.profesores.create_profe")
+@include("administracion.profesores.list_profe")
 @endsection
 @section('footer')
 @endsection
