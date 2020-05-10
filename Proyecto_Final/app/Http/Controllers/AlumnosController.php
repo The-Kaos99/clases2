@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Alumno;
+use \Milon\Barcode\DNS1D;
+use \Milon\Barcode\DNS2D; 
 use Illuminate\Http\Request;
 
 class AlumnosController extends Controller

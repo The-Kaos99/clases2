@@ -10,7 +10,12 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <h3 class="text-center">{{$alumno->nombre}} {{$alumno->apellidos}}</h3>
+        {{echo DNS1D::getBarcodeHTML("$alumno->slug", "EAN13");}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h3 class="text-center">{{$alumno->nombre}} {{$alumno->apellidos}} </h3>
     </div>
 </div>
 <div class="row">

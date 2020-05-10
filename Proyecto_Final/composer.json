@@ -15,7 +15,9 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
-        "symfony/thanks": "^1.0"
+        "symfony/thanks": "^1.0",
+        "milon/barcode": "^5.2"
+        
     },
     "autoload": {
         "classmap": [
@@ -54,4 +56,5 @@
         "sort-packages": true,
         "optimize-autoloader": true
     }
+    
 }
