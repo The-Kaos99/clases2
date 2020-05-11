@@ -1,3 +1,2 @@
-# Aqui añado los trabajos de clase para llevarmelos donde quiera
-# Conexion desde casa
-# Desde la web
+# Aqui es donde subo mi material y parte de mis proyectos 
+# Un saludo 

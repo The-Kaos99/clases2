@@ -5,6 +5,7 @@ use App\Alumno;
 use \Milon\Barcode\DNS1D;
 use \Milon\Barcode\DNS2D; 
 use Illuminate\Http\Request;
+use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 
 class AlumnosController extends Controller
 {
@@ -39,24 +40,27 @@ class AlumnosController extends Controller
     {
         
         if ($request->hasFile('img_alumno')) {
-            $file= $request->file('img_alumno');
-          //  $name= time().$file->getClientOriginalName();
-          
-            
-       
-        $alumno= new Alumno();
-        $alumno->nombre=$request->input('nombre_alumno');
-        $alumno->apellidos=$request->input('apellidos_alumno');
-        $alumno->fech_nac=$request->input('fech_nac');
-        $alumno->curso=$request->input('curso');
-        $alumno->grupo=$request->input('grupo');
-        $name= $alumno->nombre."_".$alumno->apellidos."_".time().".png";
-        $file->move(public_path().'/images',$name);
-        $alumno->imagen=$name;
-        $alumno->slug=time();
-        $alumno->save(); 
-    }
+            $file= $request->file('img_alumno');            
+            $alumno= new Alumno();
+            $alumno->nombre=$request->input('nombre_alumno');
+            $alumno->apellidos=$request->input('apellidos_alumno');
+            $alumno->fech_nac=$request->input('fech_nac');
+            $alumno->curso=$request->input('curso');
+            $alumno->grupo=$request->input('grupo');
+            $name= $alumno->nombre."_".$alumno->apellidos."_".time().".png";
+            $file->move(public_path().'/images',$name);
+            $alumno->imagen=$name;
+            $alumno->slug=time();
+            $alumno->save(); 
+        }
         $alumnos=Alumno::all();
+        $subject = "Inside or Outside";
+        $for = "mariansomesa@gmail.com";
+        Mail::send('email',$request->all(), function($msj) use($subject,$for){
+            $msj->from("prueba@gmail.com","Inside or Outside Validation System");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
         return view('administracion.alumnos.index', compact('alumnos'));
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Padre;
-use App\Alumno;
 use Illuminate\Http\Request;
 
 class PadresController extends Controller
@@ -14,8 +13,8 @@ class PadresController extends Controller
      */
     public function index()
     {
-        $alumnos=Alumno::all();
-        return view('administracion.padres.index',compact('alumnos'));
+        $padres=Alumno::all();
+        return view('administracion.padres.index',compact('padres'));
     }
 
     /**
@@ -25,7 +24,7 @@ class PadresController extends Controller
      */
     public function create()
     {
-        
+        return view('administracion.padres.index');
     }
 
     /**

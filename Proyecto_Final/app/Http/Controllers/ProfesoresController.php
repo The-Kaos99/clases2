@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Profesor;
 use App\Alumno;
 use Illuminate\Http\Request;
+use Mail; //Importante incluir la clase Mail, que será la encargada del envío
+use App\Mail\PassProfesores;
 
 class ProfesoresController extends Controller
 {
@@ -51,6 +53,8 @@ class ProfesoresController extends Controller
         $profesor->pass = md5($password);
         $profesor->save();
         $profesors=  Profesor::all();
+        Mail::to($profesor->email)->send(new PassProfesores($password , $profesor));
+
         return view('administracion.profesores.index', compact('profesors'));
     }
 

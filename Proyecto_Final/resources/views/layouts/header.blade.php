@@ -1,5 +1,5 @@
 <header>
-    <div class="row  bg-gradient-success opacidad-10 shadow-lg">
+    <div class="row bg-gradient-success opacidad-10 shadow-lg">
         <div class="col-8">
             <h1>{{ $titulo }}</h1>
         </div>
