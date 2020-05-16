@@ -6,6 +6,7 @@ use \Milon\Barcode\DNS1D;
 use \Milon\Barcode\DNS2D; 
 use Illuminate\Http\Request;
 use Mail; //Importante incluir la clase Mail, que será la encargada del envío
+use Image;//para las imagenes 
 
 class AlumnosController extends Controller
 {
@@ -27,7 +28,9 @@ class AlumnosController extends Controller
      */
     public function create()
     {
-        return view('administracion.alumnos.index');
+
+        $alumnos=Alumno::all();
+        return view('administracion.alumnos.index', compact('alumnos'));
     }
 
     /**
@@ -38,30 +41,31 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $alumno= new Alumno();
         if ($request->hasFile('img_alumno')) {
             $file= $request->file('img_alumno');            
-            $alumno= new Alumno();
+            
             $alumno->nombre=$request->input('nombre_alumno');
             $alumno->apellidos=$request->input('apellidos_alumno');
-            $alumno->fech_nac=$request->input('fech_nac');
-            $alumno->curso=$request->input('curso');
-            $alumno->grupo=$request->input('grupo');
-            $name= $alumno->nombre."_".$alumno->apellidos."_".time().".png";
+            $name= $alumno->nombre."_".$alumno->apellidos."_".time().".jpg";
             $file->move(public_path().'/images',$name);
             $alumno->imagen=$name;
-            $alumno->slug=time();
-            $alumno->save(); 
+             
+        }else{
+            $alumno->imagen='$name';
         }
+        $alumno->nombre=$request->input('nombre_alumno');
+        $alumno->apellidos=$request->input('apellidos_alumno');
+        $alumno->fech_nac=$request->input('fech_nac');
+        $alumno->curso=$request->input('curso');
+        $alumno->unidad=$request->input('unidad');
+        $alumno->slug=time();
+        $alumno->save();
+        $img = Image::make(public_path().'/images/'.$alumno->imagen);
+        $img->save(public_path().'/images/'.$alumno->imagen, 50);
         $alumnos=Alumno::all();
-        $subject = "Inside or Outside";
-        $for = "mariansomesa@gmail.com";
-        Mail::send('email',$request->all(), function($msj) use($subject,$for){
-            $msj->from("prueba@gmail.com","Inside or Outside Validation System");
-            $msj->subject($subject);
-            $msj->to($for);
-        });
         return view('administracion.alumnos.index', compact('alumnos'));
+        
     }
 
     /**
@@ -85,9 +89,11 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $alumno =ALumno::where('slug','=',$slug)->firstOrFail();
+        
+        return view('administracion.alumnos.edit',compact('alumno'));
     }
 
     /**
@@ -97,9 +103,23 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $alumno =ALumno::where('slug','=',$slug)->firstOrFail();
+        $alumno->fill($request->except('imagen','unidad'));
+        if ($request->hasFile('imagen')) {
+            $file= $request->file('imagen');  
+            $name= $alumno->nombre."_".$alumno->apellidos."_".time().".jpg";
+            $file->move(public_path().'/images',$name);
+            unlink(public_path().'/images/'.$alumno->imagen);
+            $alumno->imagen=$name;
+            $img = Image::make(public_path().'/images/'.$alumno->imagen);
+            $img->save(public_path().'/images/'.$alumno->imagen, 50);
+        }
+        $alumno->unidad=$request->input('unidad');
+        $alumno->save();
+        return view('administracion.alumnos.show',compact('alumno'));
+        
     }
 
     /**
@@ -108,8 +128,12 @@ class AlumnosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        return 'Borrado este recurso con id : '.$id;
+        $alumno= Alumno::where('slug','=',$slug)->firstOrFail();
+        unlink(public_path().'/images/'.$alumno->imagen);
+        $alumno->delete();
+        $alumnos=Alumno::all();
+        return view('administracion.alumnos.index', compact('alumnos'));
     }
 }

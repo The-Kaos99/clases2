@@ -19,7 +19,7 @@ class CreateAlumnosTable extends Migration
             $table->string('apellidos');
             $table->date('fech_nac');
             $table->string('curso');
-            $table->string('grupo');
+            $table->string('unidad');
             $table->string('imagen');
             $table->timestamps();
 

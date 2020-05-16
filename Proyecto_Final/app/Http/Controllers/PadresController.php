@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Padre;
 use Illuminate\Http\Request;
+use Mail; //Importante incluir la clase Mail, que será la encargada del envío
+use App\Mail\PassPadres;
 
 class PadresController extends Controller
 {
@@ -13,7 +15,7 @@ class PadresController extends Controller
      */
     public function index()
     {
-        $padres=Alumno::all();
+        $padres=Padre::all();
         return view('administracion.padres.index',compact('padres'));
     }
 
@@ -35,7 +37,21 @@ class PadresController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $padre= new Padre();
+        $padre->nombre=$request->input('nombre');
+        $padre->apellidos=$request->input('apellidos');
+        $padre->email=$request->input('email');
+        $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        $password = "";
+        for ($i = 0; $i < 8; $i++) {
+            //obtenemos un caracter aleatorio escogido de la cadena de caracteres
+            $password .= substr($str, rand(0, 62), 1);
+        }
+        $padre->pass=md5($password);
+        $padre->save();
+        Mail::to($padre->email)->send(new PassPadres($password , $padre));
+        $padres=Padre::all();
+        return view('administracion.padres.index',compact('padres'));
     }
 
     /**
@@ -46,7 +62,8 @@ class PadresController extends Controller
      */
     public function show($id)
     {
-        //
+        $padre=Padre::find($id);
+        return view('administracion.padres.show',compact('padre'));
     }
 
     /**
@@ -57,7 +74,7 @@ class PadresController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Esto edita";
     }
 
     /**

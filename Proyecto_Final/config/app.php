@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Inside or Outside'),
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,17 @@ return [
         /* Arriba esta tambien el del codigo de baras
          * Package Service Providers...
          */
+        Collective\Html\HtmlServiceProvider::class,
+        /* A
+         * LaravelCollective Providers...
+         */
+        Intervention\Image\ImageServiceProvider::class,
+        /*
+         *Lo que utilizo para imagenes
+         * 
+         * 
+         */
+
 
         /*
          * Application Service Providers...
@@ -225,10 +236,23 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         /*
          *Los ultimos 2 son para los codigos de baras
+         * 
+         */
+        
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        /*
+         *LaravelCollective
+         * 
+         */
+        'Image' => Intervention\Image\Facades\Image::class,
+         /*
+         *Imagenes
          * 
          */
 

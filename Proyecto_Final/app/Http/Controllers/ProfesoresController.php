@@ -46,7 +46,7 @@ class ProfesoresController extends Controller
         $profesor->email = $request->input('email');
         $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         $password = "";
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 8; $i++) {
             //obtenemos un caracter aleatorio escogido de la cadena de caracteres
             $password .= substr($str, rand(0, 62), 1);
         }

@@ -7,23 +7,22 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class PassProfesores extends Mailable
+class PassPadres extends Mailable
 {
     use Queueable, SerializesModels;
-
     public $subject='Inside or Outside Validation System';
     
     public $password;
-    public $profesor;
+    public $padre;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($password , $profesor)
+    public function __construct($password, $padre)
     {
         $this->password=$password;
-        $this->profesor=$profesor;
+        $this->padre=$padre;
     }
 
     /**
@@ -33,6 +32,6 @@ class PassProfesores extends Mailable
      */
     public function build()
     {
-        return $this->view('email.email_new_profesor');
+        return $this->view('email.email_new_padre');
     }
 }
