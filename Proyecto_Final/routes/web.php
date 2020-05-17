@@ -13,7 +13,9 @@
 
 Route::get('/', 'InicioController@index');
 Route::get('/primeros_pasos', 'InicioController@primeros_pasos');
+//Route::get('admin/eliminar_alumnos', 'AdministracionController@DeleteAlumnos');
 Route::get('admin', 'AdministracionController@index');
+Route::delete('admin', 'AdministracionController@deleteAll');
 Route::Resource("admin/profesores","ProfesoresController");
 Route::Resource("admin/alumnos","AlumnosController");
 Route::Resource("admin/padres","PadresController");

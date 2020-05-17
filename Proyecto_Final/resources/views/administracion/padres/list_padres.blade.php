@@ -15,18 +15,23 @@
             <thead>
               <tr>
                 <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
+                <th scope="col">Telefono</th>
                 <th scope="col">Email</th>
-                <th scope="col" >Accion </th>
+                <th scope="col" colspan="2">Accion</th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($padres as $padre)
                     <tr>
-                        <th scope="row">{{$padre->nombre}}</th>
-                        <td> {{$padre->apellidos}}</td>
+                        <th scope="row">{{$padre->nombre}} {{$padre->apellidos}}</th>
+                        <td> <a href="tel:+34{{$padre->telefono}}">{{$padre->telefono}}</a></td>
                         <td> <a href="mailto:{{$padre->email}}">{{$padre->email}}</a></td>
-                        <td ><a href="{{ asset("admin/padres") }}/{{$padre->id}}" class="btn btn-primary mb-3">Ver más...</a> <a href="{{ asset("admin/padres") }}/{{$padre->id}}" class="btn btn-warning mb-3">Eliminar</a></td>
+                        <td><a name="editar" id="editar" class="btn btn-warning border border-dark"
+                            href="{{ asset("admin/padres") }}/{{$padre->id}}/edit" role="button">Editar</a></td>
+                        <td > 
+                            {!! Form::open(['action'=>['PadresController@destroy', $id=$padre->id,] , 'method'=>'DELETE']) !!}
+                                {!! Form::submit('Eliminar', ['class'=>"btn btn-danger mb-3"]) !!}
+                            {!! Form::close() !!}</td>
                     </tr>
                 @endforeach
             </tbody>

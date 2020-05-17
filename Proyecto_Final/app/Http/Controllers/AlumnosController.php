@@ -136,4 +136,9 @@ class AlumnosController extends Controller
         $alumnos=Alumno::all();
         return view('administracion.alumnos.index', compact('alumnos'));
     }
+    public function deleteAllAlumno()
+    {
+        Alumno::truncate(); 
+        return view("administracion.index");
+    }
 }

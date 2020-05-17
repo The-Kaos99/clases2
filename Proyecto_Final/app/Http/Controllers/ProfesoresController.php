@@ -7,6 +7,7 @@ use App\Alumno;
 use Illuminate\Http\Request;
 use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 use App\Mail\PassProfesores;
+use Illuminate\Support\Facades\Schema;
 
 class ProfesoresController extends Controller
 {
@@ -77,7 +78,9 @@ class ProfesoresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profesor=Profesor::find($id);
+        return view('administracion.profesores.edit',compact('profesor'));
+       
     }
 
     /**
@@ -89,7 +92,15 @@ class ProfesoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $profesor=Profesor::find($id);
+        $profesor->fill($request->except('pass'));
+        $pass=md5($request->input('contra'));
+        if($profesor->pass!=$pass){
+            $profesor->pass=$pass;
+        }
+        $profesor->save();
+        $profesors=profesor::all();
+        return view('administracion.profesores.index',compact('profesors'));
     }
 
     /**
@@ -100,6 +111,15 @@ class ProfesoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $profesor=Profesor::find($id);
+        $profesor->delete();
+        $profesors=Profesor::all();
+        return view('administracion.profesores.index',compact('profesors'));
+    }
+
+    public function deleteAllProfesor()
+    {
+        Profesor::truncate(); 
+        return view("administracion.index");
     }
 }

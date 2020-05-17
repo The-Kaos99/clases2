@@ -23,11 +23,23 @@
         <p>Curso y Grupo : {{$padre->email}} {{$padre->grupo}}</p>
         </div>
 </div>
-<div class="row text-center">
-    <div class="col-12">
-        <a name="volver" id="volver" class="btn btn-primary border border-dark" href="{{ url()->previous() }}" role="button">Volver</a>
-    </div>
+
+    <div class="row text-center">
+        <div class="col-4">
+            <a name="volver" id="volver" class="btn btn-primary border border-dark" href="{{ asset("admin/padres") }}"
+                role="button">Volver</a>
+        </div>
+        <div class="col-4">
+            <a name="editar" id="editar" class="btn btn-warning border border-dark"
+                href="{{ asset("admin/padres") }}/{{$padre->id}}/edit" role="button">Editar</a>
+        </div>
+        <div class="col-4">
+            {!! Form::open(['action'=>['PadresController@destroy', $id=$padre->id,] , 'method'=>'DELETE']) !!}
+                {!! Form::submit('Eliminar', ['class'=>"btn btn-danger  border border-dark"]) !!}
+            {!! Form::close() !!}
+        </div>
 </div>
+
 
 
 @endsection

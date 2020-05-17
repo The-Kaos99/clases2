@@ -41,6 +41,7 @@ class PadresController extends Controller
         $padre->nombre=$request->input('nombre');
         $padre->apellidos=$request->input('apellidos');
         $padre->email=$request->input('email');
+        $padre->telefono=$request->input('telefono');
         $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
         $password = "";
         for ($i = 0; $i < 8; $i++) {
@@ -61,9 +62,10 @@ class PadresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $padre=Padre::find($id);
-        return view('administracion.padres.show',compact('padre'));
+    {   /*
+        Hago esto para que si alguien intenta ir a mano al link que lo lleve al inicio 
+        */
+        return view('administracion.index');
     }
 
     /**
@@ -74,7 +76,9 @@ class PadresController extends Controller
      */
     public function edit($id)
     {
-        return "Esto edita";
+        $padre=Padre::find($id);
+        return view('administracion.padres.edit',compact('padre'));
+   
     }
 
     /**
@@ -86,7 +90,16 @@ class PadresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $padre=Padre::find($id);
+        $padre->fill($request->except('pass'));
+        $pass=md5($request->input('contra'));
+        if($padre->pass!=$pass){
+            $padre->pass=$pass;
+        }
+        $padre->save();
+        $padres=Padre::all();
+        return view('administracion.padres.index',compact('padres'));
+       
     }
 
     /**
@@ -97,6 +110,9 @@ class PadresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $padre=Padre::find($id);
+        $padre->delete();
+        $padres=Padre::all();
+        return view('administracion.padres.index',compact('padres'));
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Profesor;
+use App\Alumno;
+use App\Padre;
 
 class AdministracionController extends Controller
 {
@@ -11,9 +14,12 @@ class AdministracionController extends Controller
         return view("administracion.index");
     }
    
-  
-    public function Padres()
+    public function deleteAll()
     {
-        return view('administracion.padres.index');
+        Alumno::truncate();     
+        Profesor::truncate();   
+        Padre::truncate();      
+        return view('administracion.index');      
     }
+    
 }

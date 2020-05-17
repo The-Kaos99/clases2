@@ -18,7 +18,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Unidad</th>
-                <th scope="col" >Accion </th>
+                <th scope="col" colspan="2" >Accion </th>
               </tr>
             </thead>
             <tbody>
@@ -29,7 +29,8 @@
                         <td>{{$alumno->nombre}}</td>
                         <td>{{$alumno->apellidos}}</td>
                         <td>{{$alumno->unidad}}</td>
-                        <td ><a href="{{ asset("admin/alumnos") }}/{{$alumno->slug}}" class="btn btn-primary mb-3">Ver más...</a>                        
+                        <td ><a href="{{ asset("admin/alumnos") }}/{{$alumno->slug}}" class="btn btn-primary mb-3">Ver más...</a>  </td>
+                        <td>                      
                             {!! Form::open(['action'=>['AlumnosController@destroy', $slug=$alumno->slug,] , 'method'=>'DELETE']) !!}
                                 {!! Form::submit('Eliminar', ['class'=>"btn btn-danger mb-3"]) !!}
                             {!! Form::close() !!}

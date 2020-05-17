@@ -6,29 +6,34 @@
 <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
-        <form action="/admin/padres" method="post" enctype="multipart/form-data">
-            {{ csrf_field() }}
+        {!! Form::open(['action'=>'PadresController@store' , 'method'=>'POST' , 'file'=>true ,'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
-                <label for="nombre">Nombre :</label>
-                <input type="text" class="form-control" name="nombre" id="nombre"
-                    aria-describedby="nombre" placeholder="Nombre" required>
+                {!! Form::label('nombre', 'Nombre :') !!}
+                {!! Form::text('nombre', null , ['class'=>'form-control' , 'placeholder'=>"Nombre" , 'required']) !!}
             </div>
             <div class="form-group">
-                <label for="apellidos">Apellidos :</label>
-                <input type="text" class="form-control" name="apellidos" id="apellidos"
-                    aria-describedby="apellidos" placeholder="Apellidos" required>
+                {!! Form::label('apellidos', 'Apellidos ') !!}
+                {!! Form::text('apellidos', null , ['class'=>'form-control' , 'placeholder'=>"Apellidos" , 'required']) !!}
             </div>
             <div class="form-group">
-                <label for="email">Correo electronico :</label>
-                <input type="email" class="form-control" name="email" id="email"
-                    aria-describedby="email" placeholder="email">
+                {!! Form::label('email','Correo Electronico')!!}
+                {!! Form::email('email', null , ['class'=>'form-control' , 'placeholder'=>"email" , 'required']) !!}
             </div>
             <div class="form-group">
-                <label for="contra">Contraseña :</label>
-                <input type="text" class="form-control" value="Sera enviada por correo" disabled="disabled" name="contra" id="contra">
-            </div>            
-            <button type="submit" class="btn btn-success" >Crear</button>
-        </form>
+                {!! Form::label('telefono', 'Telefono :') !!}
+                {!! Form::text('telefono', null , ['class'=>'form-control' , 'placeholder'=>"Numero de telefono"  ]) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('contra', 'Contraseña ') !!}
+                {!! Form::text('contra', null , ['class'=>'form-control' , 'placeholder'=>"Sera enviada por correo" ,'disabled'=>"disabled" ]) !!}
+            </div>
+            
+            <div class="form-group">
+                {!! Form::submit('Crear', ['class'=>'btn btn-success ']) !!}
+            </div>
+
+        {!! Form::close() !!}
+        
     </div>
     
 </div>

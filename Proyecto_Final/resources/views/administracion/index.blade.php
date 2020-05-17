@@ -3,35 +3,63 @@
 
 @section('cabecera')
 <?php
-    $titulo='Administracion del Sitio';
+    $titulo='Administracion';
 ?>
 @endsection
 @section('contenido')
         <div class="row ">
-            <div class="col-1"></div>
-            <div class="col-10 opacidad-0">
-                <h1 class="bg-warning text-center">Hola mundo</h1>
+            <div class="col-12 ">
+                <h1 class="text-center">Bienvenido</h1>
             </div>
-            <div class="col-1"></div>
+        </div>
+        <div class="row ">
+            <div class="col-12">
+               <p>En este apartado de la plataforma podra realizar diversas acciones generales y tambien en cada usuarios en particular </p>
+               <ul>
+                   <li>
+                       Creacion , elimnacion y edicion del profesorado 
+                   </li>
+                   <li>
+                        Creacion , elimnacion y edicion del alumnado
+                    </li>
+                    <li>
+                        Creacion , elimnacion y edicion de los padres de los alumnos
+                    </li>
+                    <li>
+                        Creacion , elimnacion y edicion de los administradores
+                    </li>
+                    <li>
+                        Eliminacion completa de Profesores
+                    </li>
+                    <li>
+                        Eliminacion completa de Alumnos
+                    </li>
+                    <li>
+                        Eliminacion completa de los tutores de los alumnos
+                    </li>
+               </ul>
+               <p>A continacion tendra un panel de control general para la gestion de la plataforma</p>
+               <p>Los Administradores tendran que ser eliminados manualmente</p>
+            </div>
         </div>
         <hr>
-    </div>
+        <div class="row">
+            <div class="col-6 mt-3" ><h4>Eliminacion de todos los Datos</h4></div>
+            <div class="col-6">
+                {!! Form::open(['action'=>['AdministracionController@deleteAll',] , 'method'=>'DELETE']) !!}
+                    {!! Form::submit('Eliminar Datos', ['class'=>"btn btn-danger mb-3 p-3 border border-dark"]) !!}
+                {!! Form::close() !!}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 text-center"><h2>Creacion de administradores</h2></div>            
+        </div>
+
+    
 @endsection
 @section('footer')
 
 @endsection
            
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+   
