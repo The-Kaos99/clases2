@@ -30,7 +30,7 @@ class ProfesoresController extends Controller
     public function create()
     {
         
-        return view('administracion.profesores.index');
+        return redirect()->action('ProfesoresController@index');
     }
 
     /**
@@ -41,6 +41,11 @@ class ProfesoresController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'nombre'=>'required|max:35',
+            'apellidos'=>'required',
+            'email'=>'required|email',
+        ]);
         $profesor = new Profesor();
         $profesor->nombre = $request->input('nombre');
         $profesor->apellidos = $request->input('apellidos');
@@ -53,10 +58,8 @@ class ProfesoresController extends Controller
         }
         $profesor->pass = md5($password);
         $profesor->save();
-        $profesors=  Profesor::all();
         Mail::to($profesor->email)->send(new PassProfesores($password , $profesor));
-
-        return view('administracion.profesores.index', compact('profesors'));
+        return redirect()->action('ProfesoresController@index');
     }
 
     /**
@@ -67,7 +70,7 @@ class ProfesoresController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->action('ProfesoresController@index');
     }
 
     /**
@@ -99,8 +102,7 @@ class ProfesoresController extends Controller
             $profesor->pass=$pass;
         }
         $profesor->save();
-        $profesors=profesor::all();
-        return view('administracion.profesores.index',compact('profesors'));
+        return redirect()->action('ProfesoresController@index')->with('status','Datos Modificados');
     }
 
     /**
@@ -111,15 +113,19 @@ class ProfesoresController extends Controller
      */
     public function destroy($id)
     {
+        if ($id=='allDelete') {
+            Profesor::truncate();
+            $profesors=Profesor::all();
+            return view('administracion.profesores.index',compact('profesors'));
+        }
         $profesor=Profesor::find($id);
         $profesor->delete();
-        $profesors=Profesor::all();
-        return view('administracion.profesores.index',compact('profesors'));
+        return redirect()->action('ProfesoresController@index')->with('status','Todos los Profesores Eliminados Correctamente');
     }
 
     public function deleteAllProfesor()
     {
         Profesor::truncate(); 
-        return view("administracion.index");
+        return redirect()->action('ProfesoresController@index')->with('status','Profesor Eliminado Correctamente');
     }
 }

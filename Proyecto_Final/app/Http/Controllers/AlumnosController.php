@@ -28,9 +28,7 @@ class AlumnosController extends Controller
      */
     public function create()
     {
-
-        $alumnos=Alumno::all();
-        return view('administracion.alumnos.index', compact('alumnos'));
+        return redirect()->action('AlumnosController@index');
     }
 
     /**
@@ -41,12 +39,19 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'nombre'=>'required|max:35',
+            'apellidos'=>'required',
+            'imagen'=>'required|image',
+            'fech_nac'=>'required',
+            'unidad'=>'required',
+            'curso'=>'required',
+        ]);
         $alumno= new Alumno();
-        if ($request->hasFile('img_alumno')) {
-            $file= $request->file('img_alumno');            
-            
-            $alumno->nombre=$request->input('nombre_alumno');
-            $alumno->apellidos=$request->input('apellidos_alumno');
+        if ($request->hasFile('imagen')) {
+            $file= $request->file('imagen');
+            $alumno->nombre=$request->input('nombre');
+            $alumno->apellidos=$request->input('apellidos');
             $name= $alumno->nombre."_".$alumno->apellidos."_".time().".jpg";
             $file->move(public_path().'/images',$name);
             $alumno->imagen=$name;
@@ -54,8 +59,6 @@ class AlumnosController extends Controller
         }else{
             $alumno->imagen='$name';
         }
-        $alumno->nombre=$request->input('nombre_alumno');
-        $alumno->apellidos=$request->input('apellidos_alumno');
         $alumno->fech_nac=$request->input('fech_nac');
         $alumno->curso=$request->input('curso');
         $alumno->unidad=$request->input('unidad');
@@ -63,8 +66,8 @@ class AlumnosController extends Controller
         $alumno->save();
         $img = Image::make(public_path().'/images/'.$alumno->imagen);
         $img->save(public_path().'/images/'.$alumno->imagen, 50);
-        $alumnos=Alumno::all();
-        return view('administracion.alumnos.index', compact('alumnos'));
+        return redirect()->action('AlumnosController@index')->with('status','Alumno Creado Correctamente');
+       
         
     }
 
@@ -76,11 +79,8 @@ class AlumnosController extends Controller
      */
     public function show($slug)
     {
-        $alumno =ALumno::where('slug','=',$slug)->firstOrFail();
-        
-        /*$alumno= Alumno::find($id);*/
-      
-       return view('administracion.alumnos.show',compact('alumno'));
+        $alumno =ALumno::where('slug','=',$slug)->firstOrFail();     
+        return view('administracion.alumnos.show',compact('alumno'));
     }
 
     /**
@@ -118,7 +118,7 @@ class AlumnosController extends Controller
         }
         $alumno->unidad=$request->input('unidad');
         $alumno->save();
-        return view('administracion.alumnos.show',compact('alumno'));
+        return redirect()->action('AlumnosController@index')->with('status','Datos modificados');
         
     }
 
@@ -130,15 +130,21 @@ class AlumnosController extends Controller
      */
     public function destroy($slug)
     {
-        $alumno= Alumno::where('slug','=',$slug)->firstOrFail();
-        unlink(public_path().'/images/'.$alumno->imagen);
-        $alumno->delete();
-        $alumnos=Alumno::all();
-        return view('administracion.alumnos.index', compact('alumnos'));
+        if ($slug=='allDelete') {
+            Alumno::truncate(); 
+            $files = glob(public_path().'/images/*'); //obtenemos todos los nombres de los ficheros
+            foreach($files as $file){
+                if(is_file($file))
+                unlink($file); //elimino el fichero
+            }
+            return redirect()->action('AlumnosController@index')->with('status','Todos los Alumnos eliminado');
+        }
+            $alumno= Alumno::where('slug','=',$slug)->firstOrFail();
+            $file_path=public_path().'/images/'.$alumno->imagen;
+            \File::delete($file_path);
+            $alumno->delete();
+            return redirect()->action('AlumnosController@index')->with('status','Alumno eliminado');
+        
     }
-    public function deleteAllAlumno()
-    {
-        Alumno::truncate(); 
-        return view("administracion.index");
-    }
+    
 }

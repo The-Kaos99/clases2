@@ -21,6 +21,7 @@ class CreateAlumnosTable extends Migration
             $table->string('curso');
             $table->string('unidad');
             $table->string('imagen');
+            $table->string('slug')->unique();
             $table->timestamps();
 
         });

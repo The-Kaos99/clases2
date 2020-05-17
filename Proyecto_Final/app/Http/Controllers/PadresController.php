@@ -26,7 +26,7 @@ class PadresController extends Controller
      */
     public function create()
     {
-        return view('administracion.padres.index');
+        return redirect()->action('PadresController@index');
     }
 
     /**
@@ -37,6 +37,11 @@ class PadresController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'nombre'=>'required|max:35',
+            'apellidos'=>'required',
+            'email'=>'required|email',
+        ]);
         $padre= new Padre();
         $padre->nombre=$request->input('nombre');
         $padre->apellidos=$request->input('apellidos');
@@ -48,11 +53,11 @@ class PadresController extends Controller
             //obtenemos un caracter aleatorio escogido de la cadena de caracteres
             $password .= substr($str, rand(0, 62), 1);
         }
-        $padre->pass=md5($password);
+        //$padre->pass=md5($password);
+        $padres->pass=bcrypt($password);
         $padre->save();
         Mail::to($padre->email)->send(new PassPadres($password , $padre));
-        $padres=Padre::all();
-        return view('administracion.padres.index',compact('padres'));
+        return redirect()->action('PadresController@index')->with('status','Tutor Creado Correctamente');
     }
 
     /**
@@ -65,7 +70,7 @@ class PadresController extends Controller
     {   /*
         Hago esto para que si alguien intenta ir a mano al link que lo lleve al inicio 
         */
-        return view('administracion.index');
+        return redirect()->action('PadresController@index')->with('status','Esto no es autorizado xD ;)');
     }
 
     /**
@@ -97,8 +102,7 @@ class PadresController extends Controller
             $padre->pass=$pass;
         }
         $padre->save();
-        $padres=Padre::all();
-        return view('administracion.padres.index',compact('padres'));
+        return redirect()->action('PadresController@index')->with('status','Tutor Modificado Correctamente');
        
     }
 
@@ -110,9 +114,12 @@ class PadresController extends Controller
      */
     public function destroy($id)
     {
+        if ($id=='allDelete') {
+           Padre::truncate();
+           return redirect()->action('PadresController@index')->with('status','Todos los Tutores Eliminados');
+        }
         $padre=Padre::find($id);
         $padre->delete();
-        $padres=Padre::all();
-        return view('administracion.padres.index',compact('padres'));
+        return redirect()->action('PadresController@index')->with('status','Tutor Eliminado Correctamente');
     }
 }

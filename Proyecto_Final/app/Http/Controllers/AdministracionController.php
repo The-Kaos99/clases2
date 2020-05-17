@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -21,5 +22,6 @@ class AdministracionController extends Controller
         Padre::truncate();      
         return view('administracion.index');      
     }
+    
     
 }

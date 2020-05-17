@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSlugToAlumnos extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddSlugToAlumnos extends Migration
      */
     public function up()
     {
-        Schema::table('alumnos', function (Blueprint $table) {
-            $table->string("slug")->unique();
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddSlugToAlumnos extends Migration
      */
     public function down()
     {
-        Schema::table('alumnos', function (Blueprint $table) {
-           $table->dropColumn("slug");
-        });
+        Schema::dropIfExists('roles');
     }
 }

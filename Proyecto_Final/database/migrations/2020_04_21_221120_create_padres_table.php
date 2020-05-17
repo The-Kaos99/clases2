@@ -19,6 +19,7 @@ class CreatePadresTable extends Migration
             $table->string('apellidos');
             $table->string('email')->unique();
             $table->string('pass');
+            $table->string("telefono")->unique();
             $table->timestamps();
         });
     }

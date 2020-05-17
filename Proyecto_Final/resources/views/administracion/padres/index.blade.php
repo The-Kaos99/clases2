@@ -5,6 +5,11 @@
 ?>
 @endsection
 @section('contenido')
+@if (session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+@endif
 @include("administracion.padres.create_padres")
 @include("administracion.padres.list_padres")
 @endsection

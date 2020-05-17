@@ -28,14 +28,9 @@
                     <li>
                         Creacion , elimnacion y edicion de los administradores
                     </li>
+                    
                     <li>
-                        Eliminacion completa de Profesores
-                    </li>
-                    <li>
-                        Eliminacion completa de Alumnos
-                    </li>
-                    <li>
-                        Eliminacion completa de los tutores de los alumnos
+                        Eliminacion completa de Todos los Datos
                     </li>
                </ul>
                <p>A continacion tendra un panel de control general para la gestion de la plataforma</p>
@@ -52,11 +47,7 @@
             </div>
         </div>
         <hr>
-        <div class="row">
-            <div class="col-12 text-center"><h2>Creacion de administradores</h2></div>            
-        </div>
-
-    
+        
 @endsection
 @section('footer')
 

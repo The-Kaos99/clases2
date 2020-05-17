@@ -5,7 +5,11 @@
 ?>
 @endsection
 @section('contenido')
-<h1></h1>
+@if (session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+@endif
 @include("administracion.alumnos.create_alumno")
 @include("administracion.alumnos.list_alumno")
 @endsection
