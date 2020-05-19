@@ -29,7 +29,7 @@
         <hr>
     </div>
     <div >
-        @include("layouts.footer")
+       
         @yield("footer")
         
     </div>

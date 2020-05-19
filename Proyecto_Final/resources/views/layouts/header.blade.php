@@ -13,13 +13,13 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item ">
-                            <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="/" alt="Hola">Pagina Principal</a>
+                            <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="{{ asset("/")}}" alt="Hola">Pagina Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="/primeros_pasos">Primeros pasos</a>
+                            <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="{{ asset("/primeros_pasos")}}">Primeros pasos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="./login.php">Iniciar Sesion</a>
+                        <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="{{ asset("/login")}}">Iniciar Sesion</a>
                         </li>
                     </ul>
                 </div>

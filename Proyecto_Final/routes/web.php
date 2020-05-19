@@ -19,5 +19,6 @@ Route::Resource("admin/profesores","ProfesoresController");
 Route::Resource("admin/alumnos","AlumnosController");
 Route::Resource("admin/padres","PadresController");
 Auth::routes();
+Route::get('profesorado', 'ProfesoradoConfController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');

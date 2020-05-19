@@ -10,14 +10,16 @@ use Image;//para las imagenes
 
 class AlumnosController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $alumnos=Alumno::all();
+        $request->user()->authorizeRoles('admin');
+        $alumnos=Alumno::all();        
         return view('administracion.alumnos.index', compact('alumnos'));
     }
 

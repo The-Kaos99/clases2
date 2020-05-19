@@ -5,7 +5,7 @@
             <div class="col-1"></div>
             <div class="col-10 opacidad-0">
                 @include('common.errors')
-        {!! Form::open(['action'=>'PadresController@store' , 'method'=>'POST' , 'file'=>true ,'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['action'=>'ProfesoresController@store' , 'method'=>'POST' , 'file'=>true ,'enctype' => 'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::label('nombre', 'Nombre :') !!}
                 {!! Form::text('nombre', null , ['class'=>'form-control' , 'placeholder'=>"Nombre" , 'required']) !!}

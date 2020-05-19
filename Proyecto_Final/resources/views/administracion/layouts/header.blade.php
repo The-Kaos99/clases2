@@ -25,7 +25,12 @@
                             <a class="nav-link bg-primary m-2 opacidad-0 text-light text-center border border-primary" href="{{asset("admin/padres")}}">Tutores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-danger m-2 opacidad-0 text-light text-center border border-primary" href="{{asset("/")}}">Salir</a>
+                            <a class="nav-link bg-danger m-2 opacidad-0 text-light text-center border border-primary" href="{{asset("/logout")}}"
+                                 onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">Salir</a>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                 </form>
                         </li>
                     </ul>
                 </div>

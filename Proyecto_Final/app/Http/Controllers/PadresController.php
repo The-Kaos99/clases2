@@ -5,6 +5,8 @@ use App\Padre;
 use Illuminate\Http\Request;
 use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 use App\Mail\PassPadres;
+use App\Role;
+use App\User;
 
 class PadresController extends Controller
 {
@@ -13,8 +15,9 @@ class PadresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $padres=Padre::all();
         return view('administracion.padres.index',compact('padres'));
     }
@@ -54,8 +57,15 @@ class PadresController extends Controller
             $password .= substr($str, rand(0, 62), 1);
         }
         //$padre->pass=md5($password);
-        $padres->pass=bcrypt($password);
+        
+        $padre->pass=bcrypt($password);
         $padre->save();
+        $user = new User();
+        $user->name=$user->name=$padre->nombre.' '.$padre->apellidos;;
+        $user->email=$padre->email;
+        $user->password=$padre->pass;
+        $user->save();
+        $user->roles()->attach($role_padre);
         Mail::to($padre->email)->send(new PassPadres($password , $padre));
         return redirect()->action('PadresController@index')->with('status','Tutor Creado Correctamente');
     }
@@ -96,12 +106,19 @@ class PadresController extends Controller
     public function update(Request $request, $id)
     {
         $padre=Padre::find($id);
+        $user=User::find($padre->email);
         $padre->fill($request->except('pass'));
-        $pass=md5($request->input('contra'));
+        $pass= bcrypt($request->input('contra'));
+       
         if($padre->pass!=$pass){
             $padre->pass=$pass;
         }
         $padre->save();
+        $user->name=$padre->nombre.' '.$padre->apellidos;
+        $user->name=$padre->email;
+        $user->name=$padre->nombre;
+        $user->password=$padre->pass;
+        $user->save();
         return redirect()->action('PadresController@index')->with('status','Tutor Modificado Correctamente');
        
     }

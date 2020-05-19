@@ -20,24 +20,5 @@
         </ul>
     </div>
 </div>
-<div class="row ">
-    <div class="col-12">
-        @if (count($alumnos))
-            <table border="1">
-                @foreach ($alumnos as $persona)
-                    <tr>
-                        <td>
-                            {{$persona}}
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
-        @else
-            
-        @endif
-    </div>
-</div>
 @endsection
 
-@section('footer')
-@endsection

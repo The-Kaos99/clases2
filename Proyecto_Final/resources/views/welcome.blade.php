@@ -3,14 +3,13 @@
 
 @section('cabecera')
 <?php
-    $titulo='Pagina Principal';
+    $titulo='Bienvenidos';
 ?>
 @endsection
 @section('contenido')
         <div class="row ">
             <div class="col-12 opacidad-0">
-                <h2>Bienvenidos aquí les dare las credenciales de prueba</h2>
-                
+                <h2>Bienvenidos aquí les dare las credenciales de prueba</h2>                
                 <ul>
                     <li>Administrador : admin:admin</li>
                     <li>Profesor : profe:profe o profe@profe.com:profe</li>
@@ -21,9 +20,7 @@
         <hr>
     </div>
 @endsection
-@section('footer')
 
-@endsection
            
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

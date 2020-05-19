@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Profesor;
 use App\Alumno;
+use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 use App\Mail\PassProfesores;
@@ -16,8 +18,9 @@ class ProfesoresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $profesors=  Profesor::all();
         return view('administracion.profesores.index', compact('profesors'));
     }
@@ -41,6 +44,7 @@ class ProfesoresController extends Controller
      */
     public function store(Request $request)
     {
+        $role_profesor= Role::where('name','profesor')->first();
         $validatedData = $request->validate([
             'nombre'=>'required|max:35',
             'apellidos'=>'required',
@@ -56,8 +60,14 @@ class ProfesoresController extends Controller
             //obtenemos un caracter aleatorio escogido de la cadena de caracteres
             $password .= substr($str, rand(0, 62), 1);
         }
-        $profesor->pass = md5($password);
+        $profesor->pass = bcrypt($password);
         $profesor->save();
+        $user = new User();
+        $user->name=$profesor->nombre;
+        $user->email=$profesor->email;
+        $user->password=bcrypt($password);
+        $user->save();
+        $user->roles()->attach($role_profesor);
         Mail::to($profesor->email)->send(new PassProfesores($password , $profesor));
         return redirect()->action('ProfesoresController@index');
     }
@@ -96,12 +106,19 @@ class ProfesoresController extends Controller
     public function update(Request $request, $id)
     {
         $profesor=Profesor::find($id);
+        $user=User::find($profesor->email);
         $profesor->fill($request->except('pass'));
-        $pass=md5($request->input('contra'));
+
+        $pass=bcrypt($request->input('pass'));
         if($profesor->pass!=$pass){
             $profesor->pass=$pass;
+            $user->password=bcrypt($password);
         }
         $profesor->save();
+        $user->name=$profesor->nombre;
+        $user->email=$profesor->email;
+        
+        $user->save();
         return redirect()->action('ProfesoresController@index')->with('status','Datos Modificados');
     }
 
